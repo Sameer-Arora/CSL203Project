@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <title>CV Maker:Text Document</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+  <!-- jQuery UI Widget and Effects Core (custom download)
+     You can make your own at: http://jqueryui.com/download -->
+  <script src="js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+  
+  <!-- Latest version of jQuery Mouse Wheel by Brandon Aaron
+     You will find it here: http://brandonaaron.net/code/mousewheel/demos -->
+  <script src="js/jquery.mousewheel.min.js" type="text/javascript"></script>
+
+  <!-- jQuery Kinetic - for touch -->
+  <script src="js/jquery.kinetic.min.js" type="text/javascript"></script>
+
+  <!-- Smooth Div Scroll 1.3 minified -->
+  <script src="js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
+ <style>
+		
+    @media (min-width:30em){
+      .card-columns {
+          -webkit-column-count: 2;
+          -moz-column-count: 2;
+          column-count: 2;
+          -webkit-column-gap: 1.25rem;
+          -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 48em) {
+          .card-columns {
+              -webkit-column-count: 3;
+              -moz-column-count: 3;
+              column-count: 3;
+          -webkit-column-gap: 1.25rem;
+          -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+          }
+      }
+
+      @media (min-width: 62em) {
+          .card-columns {
+              -webkit-column-count: 4;
+              -moz-column-count: 4;
+              column-count: 4;
+          -webkit-column-gap: 1.25rem;
+          -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+          }
+      }
+
+      @media (min-width: 75em) {
+          .card-columns {
+              -webkit-column-count: 5;
+              -moz-column-count: 5;
+              column-count: 5;
+          -webkit-column-gap: 1.25rem;
+          -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+          }
+      }
+
+    @media (min-width: 15em ){
+        .card-columns .card {
+          display: inline-block;
+          width: 100%;
+      }
+    }
+
+		html body{
+	    height: 100%;
+	    background-color: #F5F7FA;
+	    direction: ltr;
+		}
+
+		.card h4{
+	    	font-size: 1.5vw;
+
+		}
+		.card {
+
+	    margin-bottom: 1.875rem;
+	    border: none;
+	    border-radius: 0;
+	    -webkit-box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+	    box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+	    font-size: 1.5vw;
+
+		}
+
+		.rating {
+    		float:left;
+		}
+
+		/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+		   follow these rules. Every browser that supports :checked also supports :not(), so
+		   it doesn’t make the test unnecessarily selective */
+		.rating:not(:checked) > input {
+		    position:absolute;
+		    top:-9999px;
+		    clip:rect(0,0,0,0);
+		}
+
+		.rating:not(:checked) > label {
+		    float:right;
+		    width:1em;
+		    padding:0.1em;
+		    overflow:hidden;
+		    white-space:nowrap;
+		    cursor:pointer;
+		    font-size:200%;
+		    line-height:1.2;
+		    color:#ddd;
+		    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+		}
+
+		.rating:not(:checked) > label:before {
+		    content: '★ ';
+		}
+
+		.rating > input:checked ~ label {
+		    color: #f70;
+		    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+		}
+
+		.rating:not(:checked) > label:hover,
+		.rating:not(:checked) > label:hover ~ label {
+		    color: gold;
+		    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+		}
+
+		.rating > input:checked + label:hover,
+		.rating > input:checked + label:hover ~ label,
+		.rating > input:checked ~ label:hover,
+		.rating > input:checked ~ label:hover ~ label,
+		.rating > label:hover ~ input:checked ~ label {
+		    color: #ea0;
+		    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+		}
+
+		.rating > label:active {
+		    position:relative;
+		    top:2px;
+		    left:2px;
+		}
+
+    
+
+		</style>
+		    <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+  <body>        
+
+               
+    <div class="container-fluid">
+      <span id="" class="heading"  >Your Templates</span>
+      <div class="row flex-row flex-nowrap" id=  }makeMeScrollable">
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      <form action="test.php" method="post">
+                      <fieldset class="rating1" id="1">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+                      </form>
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+
+                      <small class="text-muted">3 </small>
+                      <form action="test.php" method="post">
+                      <fieldset class="rating" id="2">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+                      </form>
+           
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      <form action="test.php" method="post">
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+                      </form>
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      <form action="test.php" method="post">
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+                      </form>
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+      </div>
+      <span id="" class="heading" >CSE Templates</span>
+       <form action="test.php" method="post">
+      <div class="row flex-row flex-nowrap">
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+      </div>
+      <span id="" class="heading" >EE Templates</span>
+       <form action="test.php" method="post">
+      <div class="row flex-row flex-nowrap">
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+      </div>                      </form>
+
+      <span id="" class="heading" >ME Templates</span>
+       <form action="test.php" method="post">
+      <div class="row flex-row flex-nowrap">
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+                                </div>
+      </div>
+      <span id="" class="heading" >CE Templates</span>
+       <form action="test.php" method="post">
+      <div class="row flex-row flex-nowrap">
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+      </div>                      </form>
+      <span id="" class="heading" >CH Templates</span>
+       <form action="test.php" method="post">
+      <div class="row flex-row flex-nowrap">
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                <div class="card-content">
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+             </div>
+          <div class="col-3">
+              <div class="card card-block"><div class="card" >
+                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">CV4 </h4>
+                    <p class="card-text">This card has supporting text below as a natural lead-in
+                      to additional content.</p>
+                    <p class="card-text">
+
+                      <small class="text-muted">3 </small>
+                      
+                      <fieldset class="rating">
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                 </fieldset>
+
+           
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+      </div>                      </form>
+  </div>
+
+      <script type="text/javascript">
+    $(document).ready(function () {
+      console.log('runn');                      </script>
+      $("#makeMeScrollable").smoothDivScroll({
+        
+        mousewheelScrolling: "allDirections",
+        manualContinuousScrolling: true,
+        autoScrollingMode: "onStart"
+      });
+    });
+    </script>
+ </body>
+
+</html>
