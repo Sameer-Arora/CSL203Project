@@ -25,5 +25,10 @@ and open the template in the editor.
         <?php
         require 'login.html';
         ?>
+
+
+    <script>
+    	
+    </script>    
     </body>
 </html>

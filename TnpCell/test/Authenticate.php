@@ -22,13 +22,12 @@
 function run_query($connection,$query) {
     $strSQL=mysqli_query($connection,$query);
     $executed=false;
-    if($strSQL){
+    if( count($strSQL)!=0 ){
         $executed=true;
-        echo "executed.";
+        echo "exec<br>";
     }else{
         echo "Error".$connection->error;
     }
-    #echo "fsaf $executed" ;     
     return $executed;
 }
 
@@ -36,28 +35,35 @@ function run_query($connection,$query) {
 
     $successful_login=false;
     $successful_signup=false;
-    $action=$_POST['action'];
+    $action=$_GET['action'];
+    echo $action;
     $person_name;
     
 
-    if(isset($_POST['action']))
+    if(isset($_GET['action']))
     {
         $message="";
 
-        if($_POST['action']=="login")
+        if($_GET['action']=="login")
         {
 
             $email = mysqli_real_escape_string($connection,$_POST['email']);
             $password = mysqli_real_escape_string($connection,$_POST['password']);
+            $role = mysqli_real_escape_string($connection,$_POST['role']);
 
-            //password
-            $strSQL = mysqli_query($connection,"select name from auth where email='".$email."' and password='".($password)."'") ;
+             echo "$email,$password";
 
-            $Results = mysqli_fetch_array($strSQL);
-            
-            if(count($Results)==1)
+            $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join student on student.person_id=auth.person_id where email='".$email."' and password='".($password)."'") ;
+
+            $Results=mysqli_fetch_array($strSQL);
+
+           // echo count($Results);
+            echo "<br>".mysqli_num_rows($strSQL);
+
+            if(mysqli_num_rows($strSQL)==1)
             {
                 $message = $Results['name']." Login Sucessfully!!";
+                echo $message;
                 $person_name=$Results['name'];
                 $successful_login=true;
                 $person_id=$Results['person_id'];
@@ -68,11 +74,12 @@ function run_query($connection,$query) {
             }        
         }
 
-        elseif($_POST['action']=="stu_signup")
+        elseif($_GET['action']=="stu_signup")
         {
 
             $username       = mysqli_real_escape_string($connection,$_POST['username']);
             $email      = mysqli_real_escape_string($connection,$_POST['email']);
+
             $department = mysqli_real_escape_string($connection,$_POST['department']);
 
             $year = mysqli_real_escape_string($connection,$_POST['year']);
@@ -94,7 +101,7 @@ function run_query($connection,$query) {
                 echo $message;
                 
             }
-            elseif($numResults>1)
+            elseif($numResults>=1)
             {
                 $message = $email." Email already exist!!  you can login";
                 echo $message;
@@ -105,58 +112,97 @@ function run_query($connection,$query) {
 
                 $execute=run_query($connection,$query);
                 
-                $message="break";
-                $re=true;
-                //echo $re;
-                echo "<br/>$message";
-                echo $execute;    
-                
-                if($execute==false){
-                    $message = "cannt execute!! ";
+               if($execute==false){
+                    $message = "cannt execute insert!! ";
                     echo $message;
                 }else{
                     $message = "executed auth!! ";
                     echo $message;
-                    $person_name=$name;
-                    
-                    $query = "select person_id from auth where email='".$email."'";
-                    $strSQL=mysqli_query($connection,$query);
-                    $Results = mysqli_fetch_array($strSQL);
-                    $person_id=$Results['person_id'];
+                    $person_id=mysqli_insert_id($connection);
                 }
-
 
                 $query = "insert into student(name,department,year,person_id) values('".$username."','".$department."',".$year.",".$person_id.")";
 
                 $execute=run_query($connection,$query);
                 
-                $message="break";
-                $re=true;
-                //echo $re;
-                echo "<br/>$message";
-                echo $execute;    
+                if($execute==true){
+                    $message = "Signup Sucessfully!! ";
+                    echo $message;
+                    $successful_signup=true;
+                }else{
+                    $message = "cannt execute insert !!";
+                    echo $message;
+                }
+            }
+        }
+
+        elseif ($_GET['action']=="fac_signup") {
+        
+            $username       = mysqli_real_escape_string($connection,$_POST['username']);
+            $email      = mysqli_real_escape_string($connection,$_POST['email']);
+
+            $department = mysqli_real_escape_string($connection,$_POST['department']);
+
+            $post = mysqli_real_escape_string($connection,$_POST['post']);
+
+            $research_int = mysqli_real_escape_string($connection,$_POST['rea']);
+
+            $phone = mysqli_real_escape_string($connection,$_POST['phone']);
+
+
+            $password   = mysqli_real_escape_string($connection,$_POST['password']);
+
+            
+            echo "$email , $password ,$username ,$post,$department,$phone,$research_int";
+
+            $query = "SELECT email FROM auth where email='".$email."'";
+
+            $strSQL = mysqli_query($connection,$query);
+            $numResults = mysqli_num_rows($strSQL);
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
+            {
+                $message =  "Invalid email address please type a valid email!!";
+                echo $message;
+                
+            }
+            elseif($numResults>=1)
+            {
+                $message = $email." Email already exist!!  you can login";
+                echo $message;
+            }
+            else
+            {   
+                $query = "insert into auth(email,password,role) values('".$email."','".$password."',\"faculty\")";
+
+                $execute=run_query($connection,$query);
+                
+               if($execute==false){
+                    $message = "cannt execute insert!! ";
+                    echo $message;
+                }else{
+                    $message = "executed auth!! ";
+                    echo $message;
+                    $person_id=mysqli_insert_id($connection);
+                }
+                echo "insert into faculty(name,department,reasearch_area,post,phone_number,person_id) values('".$username."','".$department."','".$research_int."','".$post."',".$phone.",".$person_id.")<br>";
+
+                $query = "insert into faculty(name,department,reasearch_area,post,phone_number,person_id) values('".$username."','".$department."','".$research_int."','".$post."',".$phone.",".$person_id.")";
+
+                $execute=run_query($connection,$query);
                 
                 if($execute==true){
                     $message = "Signup Sucessfully!! ";
                     echo $message;
                     $successful_signup=true;
-                    $person_name=$name;
-                    
-                    $query = "select person_id from auth where email='".$email."'";
-                    $strSQL=mysqli_query($connection,$query);
-                    $Results = mysqli_fetch_array($strSQL);
-                    $person_id=$Results['person_id'];
-           
-                    $successful_signup=true;
-                    $executed=run_query($connection,$query);
+                }else{
+                    $message = "cannt execute insert !!";
+                    echo $message;
                 }
             }
         }
-echo $message;
 
     }
-
-
 
 if($successful_login){
 ?>    
@@ -178,7 +224,8 @@ else {
     ?>
 
     <script>
-    redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
+
+    //redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
 
     </script>
 
