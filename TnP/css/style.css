@@ -641,7 +641,8 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 554px;
 }
 .features .col-half .table-c .desc {
-  width: 85%;
+  width: 100%;
+  padding: 0 10%;
 }
 .features .col-half .table-c .desc > span {
   text-transform: uppercase;
@@ -681,8 +682,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .feature-center {
-  padding-left: 20px;
-  padding-right: 20px;
+
   float: left;
   width: 100%;
   margin-bottom: 40px;
@@ -693,7 +693,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .feature-center .desc {
-  padding-left: 180px;
+  padding: 0px 10%
 }
 .feature-center .icon {
   margin-bottom: 20px;
@@ -907,7 +907,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-started {
-  background: #0c9cee;
+  background: #114e62;
 }
 #fh5co-started .fh5co-heading h2 {
   color: #fff;
@@ -969,7 +969,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-footer {
-  background: #efefef;
+  background: #d6d6d6;
 }
 #fh5co-footer .fh5co-footer-links {
   padding: 0;

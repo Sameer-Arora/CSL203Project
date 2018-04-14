@@ -1,7 +1,20 @@
 <?php 
 // include("post_new.html");
 
-include ("db_conn.php");
+// mysql account
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname="feedback";
+$connection = new mysqli($servername, $username, $password,$dbname);
+// Check connection
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+}
+else{
+    // echo "Connected Successfully";
+}
+
 
 /*echo "string";
 echo "subject : ".$_POST['subject'];
@@ -21,11 +34,11 @@ function run_query($connection,$query){
 }
 
 
-$subject       = mysqli_real_escape_string($connection,$_POST['subject']);
-$message      = mysqli_real_escape_string($connection,$_POST['message']);
-$link = mysqli_real_escape_string($connection,$_POST['message']);
+$name       = mysqli_real_escape_string($connection,$_POST['name']);
+$email      = mysqli_real_escape_string($connection,$_POST['email']);
+$message = mysqli_real_escape_string($connection,$_POST['message']);
 
-$sql = "INSERT INTO posts (subject, body, link) VALUES ('".$subject."','".$message."','".$link."')"; 
+$sql = "INSERT INTO feedbacks (name, email, content) VALUES ('".$name."','".$email."','".$message."')"; 
 $executed=run_query($connection,$sql);
 
 
@@ -50,7 +63,7 @@ function redirect($url) {
     die();
 }
 
-redirect("latest_feeds.php")
+redirect("contact.html")
 
 
 
