@@ -41,7 +41,7 @@ $message = mysqli_real_escape_string($connection,$_POST['message']);
 $sql = "INSERT INTO feedbacks (name, email, content) VALUES ('".$name."','".$email."','".$message."')"; 
 $executed=run_query($connection,$sql);
 
-
+mail('shreyanshushekhar007@gmail.com', 'feedback', "$message", 'From: freak@freakzoid.com');
 
 /*$sql = "SELECT post_id, subject, body, link FROM posts";
 $result = $connection->query($sql);

@@ -1,4 +1,6 @@
 <?php 
+@ob_start();
+session_start();
 // include ("latest_feeds.html");
 include ("db_conn.php");
 
@@ -14,9 +16,11 @@ function run_query($connection,$query){
     return $executed;
 }
 
+
+
 include ("latest_feeds_1.html");
 
-session_start();
+
 
 $sql = "SELECT post_id, subject, body, link FROM posts";
 $result = $connection->query($sql);
@@ -43,9 +47,11 @@ if ($result->num_rows > 0)
     	$_SESSION['subject'] = $row['subject'];
     	$_SESSION['body'] = $row['body'];
 
+
+    	$div_id = $row['post_id'];
+
     	if ($count % 2 == 0) 
     	{
-
     		// header("location:http://localhost/TnP/test.php");
 
     		echo " 
@@ -56,7 +62,7 @@ if ($result->num_rows > 0)
 											<h3>"  . $row['subject']. "</h3>
 											<p>"  . $row['link']. "...</p>
 											<p class='author'><cite>&mdash; "  . $row['post_id']. "</cite></p>
-											<p><a href='test.php' class='btn btn-lg btn-primary'>Read More</a></p>
+											<p><a class='btn btn-lg btn-primary' href='?" .$div_id ."'>Read More</a></p>
 										</div>
 									</div>
 								</div>
@@ -72,7 +78,7 @@ if ($result->num_rows > 0)
 											<h3>"  . $row['subject']. "</h3>
 											<p>"  . $row['link']. "...</p>
 											<p class='author'><cite>&mdash; "  . $row['post_id']. "</cite></p>
-											<p><a href='test.php' class='btn btn-lg btn-primary'>Read More</a></p>
+											<p><a class='btn btn-lg btn-primary' href='?" .$div_id ."'>Read More</a></p>
 										</div>
 									</div>
 								</div>
@@ -98,6 +104,31 @@ else
 
 include ("latest_feeds_2.html");
 
+
+
+
+
+$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+// echo $actual_link;
+$query_string = parse_url($actual_link, PHP_URL_QUERY);
+// echo $query_string;
+$sql = "SELECT post_id, subject, body, link FROM posts WHERE post_id = " . $query_string ;
+$result = $connection->query($sql);
+while($row = $result->fetch_assoc()){
+	$_SESSION['subject'] = $row['subject'];
+	$_SESSION['body'] = $row['body'];
+}
+
+
+function redirect($url) {
+    ob_start();
+    header('Location: '.$url);
+    ob_end_flush();
+    die();
+}
+
+redirect("test.php");
 
 
 

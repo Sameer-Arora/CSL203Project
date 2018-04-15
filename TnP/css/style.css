@@ -603,7 +603,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .features .col-half,
 .features .col-half-image-holder {
   width: 50%;
-  float: left;
+  /*float: left;*/
 }
 @media screen and (max-width: 768px) {
   .features .col-half-image-holder {
@@ -627,7 +627,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) and (max-width: 480px) {
   .features .col-half-image-holder img {
-    margin-right: -4em;
+    /*margin-right: -4em;*/
     max-width: 100%;
   }
 }

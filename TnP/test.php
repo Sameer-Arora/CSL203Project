@@ -1,7 +1,4 @@
-
-
-
- <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -96,6 +93,7 @@ echo "
 	</div>
 </div>
 ";
+
 
 
 include("footer.html");
