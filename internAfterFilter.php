@@ -107,34 +107,34 @@
                     <form action="internAfterFilter.php" align="center" style="margin-bottom:10px;">
                           <!--<p> SORT BY: </p>-->
                           <div id="search_categories">
-                          <select name="byYear">
-                          <option value="">Year</option>        
+                        <select name="byYear">
+                          <option value="">--Year--</option>        
                           <option value="1">1st year</option>
                           <option value="2">2nd year</option>
                           <option value="3">3rd year</option>
                           <option value="4">4th year</option>
                         </select>
                         <select name="byMonth">
-                          <option value="">Duration</option>        
+                          <option value="">--Duration--</option>        
                           <option value="1">1 month</option>
                           <option value="2">2 months</option>
                           <option value="3">3 months</option>
                           <option value="4">4 months</option>
                         </select>
                           <select name="byBranch">
-                          <option value="">Branch</option>
+                          <option value="">--Branch--</option>
                           <option value="cse">Computer Science</option>
                           <option value="ee">Electrical Engg.</option>
                           <option value="me">Mechanical Engg.</option>
                           <option value="ce">Civil Engg.</option>
                         </select>
                         <select name="summerORwinter">
-                          <option value="">Summer/Winter</option>
+                          <option value="">--Summer/Winter--</option>
                           <option value="1">Summer Internship</option>
                           <option value="0">Winter Internship</option>
                         </select>
                         <select name="abroadORnot">
-                          <option value="">Abroad/Domestic</option>
+                          <option value="">--Abroad/Domestic--</option>
                           <option value="1">Abroad internship</option>
                           <option value="0">Domestic internship</option>
                         </select>
@@ -231,12 +231,16 @@
                         echo "<td class='tg-yw4l'>" . $year . "</td>";
                         echo "<td class='tg-yw4l'>" . $place . "</td>";
                         echo "<td class='tg-yw4l'>" . $time . "</td>";
-                        echo "<td class='tg-yw4l'>" . $website . "</td>";
+                        echo "<td><a href='" . $website . "'>" . $website . "</a></td>";
 
                         echo "</tr>";
   }
                       ?>
                     </table>
+                </center>
+                <center>
+                  <h3 style='margin-top:20px;'>Got an internship detail?</h3>
+                  <a href='addtodb.php' style="font-size:25px;">click here</a>
                 </center>
             </div>
         </div>

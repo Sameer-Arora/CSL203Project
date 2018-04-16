@@ -46,6 +46,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="drp-dwn.css">
+    <link rel="stylesheet" href="formsahil.css">
+    
+
 
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
@@ -95,120 +98,73 @@
         </div>
     </nav>
 
-   
-
-                    
-
-
-
-
-
 
 <div id="fh5co-servicessahil" class="fh5co-bg-sectionsahil">
         <div class="containersahil" style="margin-top:200px;margin-bottom:200px;">
-            <div class="rowsahil" >
-                    <center>
-                    <form action="internAfterFilter.php" align="center" style="margin-bottom:10px;">
-                          <!--<p> SORT BY: </p>-->
-                          <div id="search_categories">
-                        <select name="byYear">
+            <div class="rowsahil">
+<div id='formsahil2'><center>
+                <form action="addtodb.php" method="get" id="formsahil">
+                    <input type="text" name="hidName" placeholder="Internship's name..">
+                        
+                        <select name="hidYear">
                           <option value="">--Year--</option>        
                           <option value="1">1st year</option>
                           <option value="2">2nd year</option>
                           <option value="3">3rd year</option>
                           <option value="4">4th year</option>
                         </select>
-                        <select name="byMonth">
-                          <option value="">--Duration--</option>        
-                          <option value="1">1 month</option>
-                          <option value="2">2 months</option>
-                          <option value="3">3 months</option>
-                          <option value="4">4 months</option>
-                        </select>
-                          <select name="byBranch">
+                        <select name="hidBranch">
                           <option value="">--Branch--</option>
                           <option value="cse">Computer Science</option>
                           <option value="ee">Electrical Engg.</option>
                           <option value="me">Mechanical Engg.</option>
                           <option value="ce">Civil Engg.</option>
                         </select>
-                        <select name="summerORwinter">
+                        <select name="hidMonth">
+                          <option value="">--Duration--</option>        
+                          <option value="1">1 month</option>
+                          <option value="2">2 months</option>
+                          <option value="3">3 months</option>
+                          <option value="4">4 months</option>
+                        </select>
+                        <select name="hidSummerORwinter">
                           <option value="">--Summer/Winter--</option>
                           <option value="1">Summer Internship</option>
                           <option value="0">Winter Internship</option>
                         </select>
-                        <select name="abroadORnot">
+                       <input type="text" name="hidPlace" placeholder="Location...">
+                        <select name="hidAbroadORnot">
                           <option value="">--Abroad/Domestic--</option>
                           <option value="1">Abroad internship</option>
                           <option value="0">Domestic internship</option>
                         </select>
-                        </div>
-                      <input type="submit" value="Submit">
-                    </form>
-                        
-                     <table id="sahilTable" width="80%">
-                       
-                      <tr>
-                        <th>Name</th>
-                        <th>Duration</th>
-                        <th>Department</th>
-                        <th>Year</th>
-                        <th>Location</th>
-                        <th>Summer/Winter</th>
-                        <th>Website</th>
-                      </tr>
-                      <?php
-                          include('databaseConnection.php');
-                          $result = mysqli_query($connection,"select * from `internshipTable`");
-                          while ($row = $result->fetch_assoc()) {
-                              $name = $row['name'];
-                              $duration = $row['duration'];
-                              $department = $row['department'];
-                              $year = $row['year'];
-                              $place = $row['place'];
-                              $time = $row['time'];
-                              $website = $row['website'];
-                              if($duration=='1')    $duration = $duration." month";
-                              else $duration = $duration." months";
-                              if($year=='1')    $year = $year."st year";
-                              else if($year=='2')    $year = $year."nd year";
-                              else if($year=='3')    $year = $year."rd year";
-                              else if($year=='4')    $year = $year."th year";
-                              if($time=='1')    $time = "Summer";
-                              elseif($time=='0')    $time = "Winter";
-                           
-
-                                  echo "<tr>";
-                                  echo "<td>" . $name . "</td>";
-                                  echo "<td>" . $duration . "</td>";
-                                  echo "<td>" . $department . "</td>";
-                                  echo "<td>" . $year . "</td>";
-                                  echo "<td>" . $place . "</td>";
-                                  echo "<td>" . $time . "</td>";
-                                  echo "<td><a href='" . $website . "'>" . $website . "</a></td>";
-
-                                  echo "</tr>";
-
-                      
+                        <input type="text" name="hidWebsite" placeholder="website link...">
+                  
+                    <input type="submit" value="Submit">
+                </form>
+            </center>
+            <?php
+                        include('databaseConnection.php');
+                        $query = "insert into internshipTable values(" . $_GET["hidAbroadORnot"] . ",'" . $_GET[hidName] . "'," . $_GET[hidMonth] . ",'" . $_GET[hidBranch] . "'," . $_GET[hidYear] . ",'" . $_GET[hidPlace] . "'," . $_GET[hidSummerORwinter] . ",'" . $_GET[hidWebsite] . "')";
+                        $query2 = "select * from internshipTable where isAbroad=" . $_GET[hidAbroadORnot] . " and name='" .$_GET[hidName] . "' and duration=" .$_GET[hidMonth] . " and year=" .$_GET[hidYear] . " and place='" .$_GET[hidPlace] . "' and time=" .$_GET[hidSummerORwinter] . " and website='" .$_GET[hidWebsite] . "' and department='" .$_GET[hidBranch] . "'";
+                        $result2 = mysqli_query($connection,$query2);
+                        if (mysqli_num_rows($result2)!=0){
+                            echo "<script type='text/javascript'>alert('This entry already exists')</script>";
+                        } 
+                        else{
+                            $result = mysqli_query($connection,$query);
+                            if($_GET){
+                            if( $result ) 
+                                echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+                            else
+                                echo "<script type='text/javascript'>alert('failed!')</script>";
+                            }
                         }
-                      ?>
-                    </table>
-                </center>
-                <center>
-                  <h3 style='margin-top:20px;'>Got an internship detail?</h3>
-                  <a href='addtodb.php' style="font-size:25px;">click here</a>
-                </center>
-            </div>
-        </div>
+            ?>
+    </div>
 </div>
-
-
-
-
-
-
-
-
+</div>
+</div>
 
 
 
