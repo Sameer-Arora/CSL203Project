@@ -51,7 +51,25 @@ and open the template in the editor.
 
 </head>
   <body>        
+<?php
+          include ('test/Databaseconnection.php');
 
+          $strSQL=mysqli_query($connection,$query);
+
+          if( $strSQL ){
+            while($row=mysqli_fetch_array($strSQL) ) {
+              echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+            }
+
+            echo "Error".$connection->error;
+            echo "exec<br>";
+
+          }
+          else{
+            echo "Error".$connection->error;
+
+          }
+?>
 <!-- 
 <div class="alert alert-success" role="alert">
   This is a success alert—check it out!
@@ -114,76 +132,40 @@ and open the template in the editor.
               </div>
           </div>
 
-          <div class="col-3">
+          <?php
+          include ('test/Databaseconnection.php');
+
+          $strSQL=mysqli_query($connection,$query);
+
+          if( $strSQL ){
+            while($row=mysqli_fetch_array($strSQL) ) { ?>
+             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             -->
+            <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
+                  <img id="zooming" class="card-img-top img-fluid" height="120%" width="120%"  src="<?php echo $row['image']; ?>" alt="Card image cap">
                   <div class="card-body">
-                    <h4 class="card-title">CV4 </h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in
-                      to additional content.</p>
-                         <div id="" class="rate_widget">
-                            <img class="star_1 ratings_stars img-responsive" src="./images/star.png" ></img>
-                            <img class="img-responsive star_2 ratings_stars" src="./images/star.png" ></img>
-                            <img class="img-responsive star_3 ratings_stars" src="./images/star.png" ></img>
-                            <img class="img-responsive star_4 ratings_stars" src="./images/star.png" ></img>
-                            <img class="img-responsive star_5 ratings_stars" src="./images/star.png" ></img>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                  </div>
-                </div>
-             </div>
-          </div>
-          
-          <div class="col-3">
-              <div class="card card-block"><div class="card" >
-                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">CV4 </h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in
-                      to additional content.</p>
-
-                      <small class="text-muted">3 </small>
-                      <form action="test.php" method="post">
-           
+                    <h4 class="card-title"><?php echo $row['title'] ?></h4>
+                    <div id="" class="rate_widget">
+                      <img class="star_1 ratings_stars img-responsive" src="./images/star.png" ></img>
+                      <img class="img-responsive star_2 ratings_stars" src="./images/star.png" ></img>
+                      <img class="img-responsive star_3 ratings_stars" src="./images/star.png" ></img>
+                      <img class="img-responsive star_4 ratings_stars" src="./images/star.png" ></img>
+                      <img class="img-responsive star_5 ratings_stars" src="./images/star.png" ></img>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <p class="card-text">last updated</p>
                   </div>
                 </div>
               </div>
-          </div>
-          <div class="col-3">
-              <div class="card card-block"><div class="card" >
-                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">CV4 </h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in
-                      to additional content.</p>
-                    <p class="card-text">
+            </div>
+            <?php }
+          }
+          ?>
 
-                      <small class="text-muted">3 </small>
-                      <form action="test.php" method="post">
-           
-                    </p>
-                  </div>
-                </div>
-              </div>
-             </div>
-          <div class="col-3">
-              <div class="card card-block"><div class="card" >
-                  <img class="card-img-top img-fluid" src="" alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">CV4 </h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in
-                      to additional content.</p>
-                    <p class="card-text">
-
-                      <small class="text-muted">3 </small>
-                      <form action="test.php" method="post">
-           
-                    </p>
-                  </div>
-                </div>
               </div>
           </div>
 

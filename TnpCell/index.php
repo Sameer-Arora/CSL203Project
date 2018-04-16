@@ -8,10 +8,36 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Home Page:Internal Tnp Cell</title>
+
     </head>
     <body>
+
         <?php
-        require 'index.html';
+
+        include('session.php');
+       
+        if(isset($_POST['person_id'])){
+        	echo "<script type='text/javascript'>alert('logged');</script>";
+			$_SESSION['person_id']=$_POST['person_id'];
+        	$_SESSION['name']=$_POST['name'];
+
+        }
+        require 'index_main.php';
+
         ?>
-    </body>
+        <script>
+		$(document).ready(function () {
+			$('#modal').modal('hide');
+			$('#person_id').html("<?php if(isset($_SESSION['person_id'])) echo($_SESSION['name']); ?>");	
+		});
+
+		function logged(){
+		}
+
+		</script>
+	</body>
 </html>
+<!-- 
+eg3667ss9t1a4vjpk5r7gc6ao0
+eg3667ss9t1a4vjpk5r7gc6ao0
+ -->

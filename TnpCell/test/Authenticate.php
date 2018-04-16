@@ -51,28 +51,51 @@ function run_query($connection,$query) {
             $password = mysqli_real_escape_string($connection,$_POST['password']);
             $role = mysqli_real_escape_string($connection,$_POST['role']);
 
-             echo "$email,$password";
+             echo "$email,$password,$role";
 
-            $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join student on student.person_id=auth.person_id where email='".$email."' and password='".($password)."'") ;
+            if($role=="student"){
+                $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join student on student.person_id=auth.person_id where email='".$email."' and role='".$role."' and password='".($password)."'") ;
 
-            $Results=mysqli_fetch_array($strSQL);
+                $Results=mysqli_fetch_array($strSQL);
 
-           // echo count($Results);
-            echo "<br>".mysqli_num_rows($strSQL);
+               // echo count($Results);
+                echo "<br>".mysqli_num_rows($strSQL);
 
-            if(mysqli_num_rows($strSQL)==1)
-            {
-                $message = $Results['name']." Login Sucessfully!!";
-                echo $message;
-                $person_name=$Results['name'];
-                $successful_login=true;
-                $person_id=$Results['person_id'];
-            }
-            else
-            {
-                $message = "Invalid email or password!!";
-            }        
-        }
+                if(mysqli_num_rows($strSQL)==1)
+                {
+                    $message = $Results['name']." Login Sucessfully!!";
+                    echo $message;
+                    $person_name=$Results['name'];
+                    $successful_login=true;
+                    $person_id=$Results['person_id'];
+                }
+                else
+                {
+                    $message = "Invalid email or role or password!! ";
+                }        
+           }
+            else{
+                $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join faculty on faculty.person_id=auth.person_id where email='".$email."' and role='".$role."' and password='".($password)."'") ;
+
+                $Results=mysqli_fetch_array($strSQL);
+
+               // echo count($Results);
+                echo "<br>".mysqli_num_rows($strSQL);
+
+                if(mysqli_num_rows($strSQL)==1)
+                {
+                    $message = $Results['name']." Login Sucessfully!!";
+                    echo $message;
+                    $person_name=$Results['name'];
+                    $successful_login=true;
+                    $person_id=$Results['person_id'];
+                }
+                else
+                {
+                    $message = "Invalid email or role or password!!";
+                }        
+           }
+       }
 
         elseif($_GET['action']=="stu_signup")
         {
@@ -225,7 +248,7 @@ else {
 
     <script>
 
-    //redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
+    redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
 
     </script>
 

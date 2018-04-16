@@ -4507,8 +4507,8 @@ a.thumbnail.active {
 
 .alert-warning {
   background-color: #fcf8e3;
-  border-color: #faebcc;
-  color: #8a6d3b;
+  border-color: #d49b25;
+  color: #c3ae89;
 }
 .alert-warning hr {
   border-top-color: #f7e1b5;
@@ -5979,6 +5979,7 @@ button.close {
 
 .show {
   display: block !important;
+  opacity: 100;
 }
 
 .invisible {

@@ -23,7 +23,8 @@ and open the template in the editor.
        'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
        'save table contextmenu directionality emoticons template paste textcolor','code'
      ],
-     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor |code',
+     menubar:"file save edit view insert format tools table",
+     toolbar: 'insertfile save undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor |code',
        image_list: [
     {title: 'My image 1', value: 'https://www.tinymce.com/my1.gif'},
     {title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif'}
@@ -41,7 +42,7 @@ and open the template in the editor.
         </script>
     </head>
     <body> 
-    <div>
+   <!--  <div>
         <div class="box" id="<?php echo ""; ?>">
                 <div class="image fit">
                         <?php if($row['image_url'] == null) { ?>
@@ -52,9 +53,7 @@ and open the template in the editor.
                 </div>
                 <div class="content">
                         <header class="align-center">
-                        <!--
-                                <p>maecenas sapien feugiat ex purus</p>
-                        -->
+                        
                                 <h2 id="news-title1"><?php echo $row['title']; ?></h2>
                         </header>
                         <p id="news-content1"> <?php echo substr($row['content'], 0, 200); ?> . . .</p>
@@ -63,10 +62,10 @@ and open the template in the editor.
                         </footer>
                 </div>
         </div>
-    </div>
-
-        <form method="post" class="document">
-            <textarea id="mytextarea">Hello, World!</textarea>
+    </div> 
+  -->
+        <form method="post" class="document" action="save_doc.php" >
+            <textarea id="mytextarea" name="file_text" >Hello, World!</textarea>
           </form>
     </body>
 </html>

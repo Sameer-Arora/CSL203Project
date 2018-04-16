@@ -20,7 +20,8 @@ function validateUsername(input) {
 
 }
 
-$(document).jQuery(document).ready(function() {
+$(document).ready(function() {
+	alert('enterd form');
 	// Initialize popover for all required inputs
 	$('input').popover({
 		placement: 'bottom',
@@ -40,9 +41,14 @@ $(document).jQuery(document).ready(function() {
 	
 
 function validateForm(form) {
-	
+
+	alert('enterd form');
 	var username=$(form).find("input[name='username']");
-	console.log(username.val());
+	alert(username.val());
+
+
+	var phone=$(form).find("input[name='phone']");
+	alert(phone.val());
 
 	var email = $(form).find("input[name='email']");
 	
@@ -60,7 +66,8 @@ function validateForm(form) {
 	// Password regex pattern.
 	var passwordPattern = new RegExp(password.attr('pattern'));
 
-	
+	var phonePattern =new RegExp(phone.attr('pattern'));
+
 	// Password validation.
 	if (!passwordPattern.test(password.val())) {
 		password.popover('show');
@@ -85,8 +92,15 @@ function validateForm(form) {
 	
 	alert('Submitted successfully');
 	
-	if (!UsernamePattern.test(username.val())) {
+	if ( username && !UsernamePattern.test(username.val())) {
 		console.log(username.val());
+		username.popover('show');
+		return false;
+	}
+
+
+	if ( phone && !phonePattern.test(phone.val())) {
+		console.log(phone.val());
 		username.popover('show');
 		return false;
 	}
@@ -105,6 +119,7 @@ function validateEmail(input) {
 
 	var emailLengthPattern = new RegExp($(input).attr('pattern'));
 
+	console.log(input.value);
 	if (input.setCustomValidity) {
 		input.setCustomValidity('');
 		
@@ -126,6 +141,7 @@ Sets a custom validation to require both password fields to match each other
 */
 function validatePassword(input) {
 		
+	console.log(input.value);
 	
 	var passwordPattern = new RegExp($(input).attr('pattern'));
 	

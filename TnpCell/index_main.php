@@ -53,17 +53,21 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+
 	</head>
 	<body>
 		
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
+
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="fh5co-logo"><img src="images/back1.jpg" alt="logo" height="1rem" width="1rem" ></div>
+					<div id="fh5co-logo">
+						<?php if(isset($_SESSION['name'])) echo $_SESSION['name']; ?>
+					</div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
@@ -80,23 +84,32 @@
 						<li class="has-dropdown">
 							<a href="#">Internship Tools</a>
 							<ul class="dropdown">
-								<li><a href="#">LOM</a></li>
-								<li><a href="#">CV Maker</a></li>
-								<li><a href="#">Cover Letter</a></li>
+								
+								<?php if(!isset($_SESSION['person_id'])): ?>
+									<li><a href="login.php">LOM</a></li>
+									<li><a href="login.php">CV Maker</a></li>
+									<li><a href="login.php">Cover Letter</a></li>
+								<?php else: ?>
+									<li><a href="#">LOM</a></li>
+									<li><a href="cvmaker_home.php" >CV Maker</a></li>
+									<li><a href="#">Cover Letter</a></li>
+								<?php endif; ?>
+
 							</ul>
 						</li>
 						<li><a href="contact.html">Prepration Zone</a></li>
-
-						<li class="btn-cta"><a href="login.php" id="login"><span>Login</span></a></li>
-
-						<li class="btn-cta"><a href="login.php" id="logout"><span>Logout</span></a></li>
-
+						<?php if(!isset($_SESSION['person_id'])): ?>
+							<li class="btn-cta"><a href="login.php" id="login"><span>Login</span></a></li>
+						<?php else: ?>
+							<li class="btn-cta"><a href="logout.php" id="logout"><span>Logout</span></a></li>
+						<?php endif; ?>
 					</ul>
 				</div>
 			</div>
 			
 		</div>
 	</nav>
+
 
 	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/Elegant_Background-9.jpg); height:900px ">
 		<div class="overlay"></div>
@@ -113,6 +126,7 @@
 			</div>
 		</div>
 	</header>
+
 
 	<div id="fh5co-core-feature">
 		<div class="container">
@@ -313,6 +327,7 @@
 	</footer>
 	</div>
 
+
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
@@ -327,3 +342,5 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+
+

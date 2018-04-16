@@ -22,13 +22,42 @@ and open the template in the editor.
    
     </head>
     <body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document" >
+        <div class="modal-content" >
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel" style="font-weight: 10px, text-align:center " >OOPS!!</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="color: red">
+            Error Occurred:<?php if(isset($_GET['message'])) echo $_GET['message'];?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
         <?php
         require 'login.html';
         ?>
 
 
     <script>
-    	
+        $(document).ready(function () {
+
+            <?php if(!isset($_GET['message'])): ?>
+                $('#modal').modal('hide');
+            <?php else: ?>
+                $('#modal').modal('show');
+            <?php endif; ?>
+
+        });
+
     </script>    
     </body>
 </html>
