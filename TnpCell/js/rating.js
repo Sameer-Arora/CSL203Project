@@ -1,76 +1,113 @@
  
 $(document).ready(function(){
+   
+     $('.row').on('mouseenter', '.ratings_stars', function() {
+                $(this).prevAll().andSelf().attr("src","./images/star_h.png");
+            })
+           .on('mouseleave', '.ratings_stars', function( ) {
+                $(this).prevAll().andSelf().attr("src","./images/star.png");
+            });
 
-     $('.ratings_stars').hover(
-            // Handles the mouseover
-            function() {
-                $(this).prevAll().andSelf().attr("src","./images/star_h.png")
-            },
-            // Handles the mouseout
-            function() {
-                $(this).prevAll().andSelf().attr("src","./images/star.png")
-            }
-        );
+
+    // cv_id = cv_id in my case. find alternative
     
-    // widget_id = cv_id in my case.
     $('.rate_widget').each(function(i) {
-            var widget = this;
 
-            var out_data = {
-                widget_id : $(widget).attr('id'),
-                fetch: 1
-            };
+            var widget = $(this).parent();
+            var cv_id = widget.attr('id');
 
-            $.post( './test/rating.php',
-                out_data,
-                function(INFO) {
-                    alert("sucess");
-                    $(widget).data( 'fsr', INFO );
-                    alert("sucess");
-                    set_votes(widget);
+            var da="cv_id="+cv_id+"&fetch=2";
+            alert (da);
+
+            $.ajax({
+                type:"POST",
+                dataType:"text",
+                url:"./test/rating.php",  
+                data: da,
+                success: function (data) {
+                    Callback(data);   
+                    set_votes(widget,data);
+               
+
                 },
-                'json'
-            );
+                error: function (data) {
+                    alert("error");
+                    Callback(data);
+                    //Callback("Error getting the data");
+                }
+
+                });
 
     });
 
-    $('.ratings_stars').bind('click', function() {
+    $('.row').on('click','.ratings_stars', function() {
             var star = this;
-            var widget = $(this).parent();
+            var widget = $(this).parent().parent();
             
-            alert("fs");
             
-            var clicked_data = {
-                clicked_on : $(star).attr('class'),
-                widget_id : widget.attr('id')
-            };
-            alert("fs");
+            var clicked_on=$(this).attr('class').split(' ').pop();
+            var cv_id = widget.attr('id');
 
-            $.post(
-                './test/rating.php',
-                clicked_data,
-                function(INFO) {
-                    alert("sucess");
-                    widget.data( 'fsr', INFO );
-                    alert("sucess");
-                    set_votes(widget);
+            var da="cv_id="+cv_id+"&clicked_on="+clicked_on;
+            alert (da);
+
+            $.ajax({
+                type:"POST",
+                dataType:"text",
+                url:"./test/rating.php",  
+                data: da,
+                success: function (data) {
+                    Callback(data);
+                    set_votes(widget,data);
                 },
-                'json',
-            ); 
-            alert("fs");
+                error: function (data) {
+                    alert("error");
+                    Callback(data);
+                    //Callback("Error getting the data");
+                }
 
-        });
+                });
+    }); 
+
+    function deparam(query) {
+        var pairs, i, keyValuePair, key, value, map = {};
+        // remove leading question mark if its there
+        if (query.slice(0, 1) === '?') {
+            query = query.slice(1);
+        }
+        if (query !== '') {
+            pairs = query.split('&');
+            for (i = 0; i < pairs.length; i += 1) {
+                keyValuePair = pairs[i].split('=');
+                key = decodeURIComponent(keyValuePair[0]);
+                value = (keyValuePair.length > 1) ? decodeURIComponent(keyValuePair[1]) : undefined;
+                map[key] = value;
+            }
+        }
+        return map;
+    }
 
 
-    function set_votes(widget) {
+    function Callback(data)
+    {
+        console.log(data);
+        alert(data);
+    }
 
-    var avg = $(widget).data('fsr').whole_avg;
-    var votes = $(widget).data('fsr').number_votes;
-    var exact = $(widget).data('fsr').dec_avg;
+    function set_votes(widget,data) {
+
+    var values=deparam(data);
+    var avg =values['avg_rating'] ;
+    var votes = values['no_votes'];
     
-    $(widget).find('.star_' + avg).prevAll().andSelf().addClass('ratings_vote');
-    $(widget).find('.star_' + avg).nextAll().removeClass('ratings_vote'); 
-    $(widget).find('.total_votes').text( votes + ' votes recorded (' + exact + ' rating)' );
+    alert(avg); 
+    console.log(avg);   
+    alert(votes);
+    console.log(votes);   
+
+    $(widget).find('.star_' + avg).prevAll().andSelf().attr("src","./images/star_f.png");
+    $(widget).find('.star_' + avg).nextAll().attr("src","./images/star.png"); 
+    $(widget).find('.total_votes').text( votes + ' votes recorded (' + avg + ' rating)' );
     
     }
 

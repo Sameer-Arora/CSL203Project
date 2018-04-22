@@ -1,4 +1,4 @@
 <?php 
 session_start();
-echo "session sucessfully";
+#echo "session sucessfully";
 ?>

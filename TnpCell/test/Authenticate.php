@@ -54,47 +54,87 @@ function run_query($connection,$query) {
              echo "$email,$password,$role";
 
             if($role=="student"){
-                $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join student on student.person_id=auth.person_id where email='".$email."' and role='".$role."' and password='".($password)."'") ;
+
+
+                $strSQL = mysqli_query($connection," select name,auth.person_id from auth inner join student on student.person_id=auth.person_id where email='".$email."'" ) ;
 
                 $Results=mysqli_fetch_array($strSQL);
 
                // echo count($Results);
                 echo "<br>".mysqli_num_rows($strSQL);
 
-                if(mysqli_num_rows($strSQL)==1)
+
+                if(mysqli_num_rows($strSQL)==0)
                 {
-                    $message = $Results['name']." Login Sucessfully!!";
+                    $message =" Sign up first !!";
                     echo $message;
-                    $person_name=$Results['name'];
-                    $successful_login=true;
-                    $person_id=$Results['person_id'];
                 }
                 else
-                {
-                    $message = "Invalid email or role or password!! ";
-                }        
-           }
+                    {        
+
+              
+                    $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join student on student.person_id=auth.person_id where email='".$email."' and role='".$role."' and password='".($password)."'") ;
+
+                    $Results=mysqli_fetch_array($strSQL);
+
+                   // echo count($Results);
+                    echo "<br>".mysqli_num_rows($strSQL);
+
+                    if(mysqli_num_rows($strSQL)==1)
+                    {
+                        $message = $Results['name']." Login Sucessfully!!";
+                        echo $message;
+                        $person_name=$Results['name'];
+                        $successful_login=true;
+                        $person_id=$Results['person_id'];
+                    }
+                    else
+                    {
+                        $message = "Invalid email or role or password!!";
+                    }        
+               }
+            }
+
             else{
-                $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join faculty on faculty.person_id=auth.person_id where email='".$email."' and role='".$role."' and password='".($password)."'") ;
+
+                $strSQL = mysqli_query($connection," select name,auth.person_id from auth inner join faculty on faculty.person_id=auth.person_id where email='".$email."'" ) ;
 
                 $Results=mysqli_fetch_array($strSQL);
 
                // echo count($Results);
                 echo "<br>".mysqli_num_rows($strSQL);
 
-                if(mysqli_num_rows($strSQL)==1)
+
+                if(mysqli_num_rows($strSQL)==0)
                 {
-                    $message = $Results['name']." Login Sucessfully!!";
+                    $message =" Sign up first !!";
                     echo $message;
-                    $person_name=$Results['name'];
-                    $successful_login=true;
-                    $person_id=$Results['person_id'];
                 }
                 else
-                {
-                    $message = "Invalid email or role or password!!";
-                }        
-           }
+                    {        
+
+              
+                    $strSQL = mysqli_query($connection,"select name,auth.person_id from auth inner join faculty on faculty.person_id=auth.person_id where email='".$email."' and role='".$role."' and password='".($password)."'") ;
+
+                    $Results=mysqli_fetch_array($strSQL);
+
+                   // echo count($Results);
+                    echo "<br>".mysqli_num_rows($strSQL);
+
+                    if(mysqli_num_rows($strSQL)==1)
+                    {
+                        $message = $Results['name']." Login Sucessfully!!";
+                        echo $message;
+                        $person_name=$Results['name'];
+                        $successful_login=true;
+                        $person_id=$Results['person_id'];
+                    }
+                    else
+                    {
+                        $message = "Invalid email or role or password!!";
+                    }        
+               }
+            } 
        }
 
         elseif($_GET['action']=="stu_signup")
@@ -234,12 +274,12 @@ if($successful_login){
     </script>    
 
 <?php }
-else if($successful_signup){
+if($successful_signup){
+    echo "cute";
     ?>
 
     <script>
-    redirect("../index.php",'post',{form_submitted:'true',message:'<?php echo $message;?>' ,name: '<?php echo $person_name;?>',person_id:'<?php echo $person_id;?>'}  );
- 
+    redirect("../index.php",'post',{form_submitted:'true',message:'<?php echo $message;?>' ,name: '<?php echo $username;?>',person_id:'<?php echo $person_id;?>'}  );
     </script>
 
 <?php }
@@ -248,7 +288,7 @@ else {
 
     <script>
 
-    redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
+    //redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
 
     </script>
 

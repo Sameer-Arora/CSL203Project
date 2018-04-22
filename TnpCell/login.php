@@ -43,7 +43,10 @@ and open the template in the editor.
       </div>
     </div>
         <?php
+       
+        mail("shreyanshushekhar7@gmail.com","Success","Send mail from localhost using PHP");
         require 'login.html';
+       
         ?>
 
 
