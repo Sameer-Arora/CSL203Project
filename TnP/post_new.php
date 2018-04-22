@@ -20,12 +20,19 @@ function run_query($connection,$query){
     return $executed;
 }
 
+// date_default_timezone_set('Asia/Kolkata');
+// $date_time =  date('d-m-Y H:i:sa');
 
-$subject       = mysqli_real_escape_string($connection,$_POST['subject']);
-$message      = mysqli_real_escape_string($connection,$_POST['message']);
-$link = mysqli_real_escape_string($connection,$_POST['message']);
 
-$sql = "INSERT INTO posts (subject, body, link) VALUES ('".$subject."','".$message."','".$link."')"; 
+$subject    = mysqli_real_escape_string($connection,$_POST['subject']);
+$message    = mysqli_real_escape_string($connection,$_POST['message']);
+$link       = mysqli_real_escape_string($connection,$_POST['message']);
+$person_id  = 1;
+
+$message = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br/>",$message);
+$link = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br/>",$link);
+
+$sql = "INSERT INTO posts (person_id, subject, link, body) VALUES ('".$person_id."','".$subject."','".$link."','".$message."')"; 
 $executed=run_query($connection,$sql);
 
 

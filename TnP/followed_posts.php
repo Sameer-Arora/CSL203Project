@@ -18,11 +18,11 @@ function run_query($connection,$query){
 
 
 
-include ("latest_feeds_1.html");
+include ("followed_posts1.html");
 
 
 
-$sql = "SELECT post_id, subject, body, link FROM posts ORDER BY post_id DESC";
+$sql = "SELECT DISTINCT posts.post_id, subject, body, link FROM followed_posts INNER JOIN posts ON followed_posts.post_id = posts.post_id WHERE followed_posts.person_id = 1 ORDER BY post_id DESC";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) 

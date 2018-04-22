@@ -94,16 +94,26 @@ echo "
 </div>
 ";
 
+// echo $_SESSION['post_id'];
 
+// include("follow1.php");
 
-include("footer.html");
 ?>
 
 
-		
 
 
-	
+<!-- =========================================================================== -->
+
+
+
+
+
+<?php 
+include 'junk.php';
+include("footer.html");
+?>
+
 	</div>
 
 	<div class="gototop js-top">

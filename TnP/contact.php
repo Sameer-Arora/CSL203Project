@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname="feedback";
+$dbname="tnp_cell";
 $connection = new mysqli($servername, $username, $password,$dbname);
 // Check connection
 if ($connection->connect_error) {
