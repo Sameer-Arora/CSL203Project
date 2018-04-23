@@ -28,20 +28,7 @@
             <?php
                         include('connect.php');
                         $query = "insert into alumni values('" . $_GET['idName'] . "','" . $_GET['idBranch'] . "'," . $_GET['idYear'] . ",'" . $_GET['idEmail'] . "','" . $_GET['idCompany'] . "','" . $_GET['idPost'] . "','" . $_GET['idAddress'] ."','" . $_GET['idPhone']. "')";
-                        /*$query2 = "select * from alumni where isAbroad=" . $_GET[hidAbroadORnot] . " and name='" .$_GET[hidName] . "' and duration=" .$_GET[hidMonth] . " and year=" .$_GET[hidYear] . " and place='" .$_GET[hidPlace] . "' and time=" .$_GET[hidSummerORwinter] . " and website='" .$_GET[hidWebsite] . "' and department='" .$_GET[hidBranch] . "'";
-                        $result2 = mysqli_query($conn,$query2);
-                        if (mysqli_num_rows($result2)!=0){
-                            echo "<script type='text/javascript'>alert('This entry already exists')</script>";
-                        } 
-                        else{
-                            $result = mysqli_query($connection,$query);
-                            if($_GET){
-                            if( $result ) 
-                                echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-                            else
-                                echo "<script type='text/javascript'>alert('failed!')</script>";
-                            }
-                        }*/
+                       
                         $result = mysqli_query($conn,$query);
             ?>
     </div>
