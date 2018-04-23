@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alumni` (
-  `Alumni_id` int(11) NOT NULL,
+  #`Alumni_id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Department` varchar(50) NOT NULL,
   `Year` int(11) NOT NULL,
@@ -47,10 +47,10 @@ CREATE TABLE `alumni` (
 --
 -- Indexes for table `alumni`
 --
-ALTER TABLE `alumni`
-  ADD PRIMARY KEY (`Alumni_id`);
+#ALTER TABLE `alumni`
+ # ADD PRIMARY KEY (`Alumni_id`);
 
-ALTER TABLE `alumni` AUTO_INCREMENT=1001;
+#ALTER TABLE `alumni` AUTO_INCREMENT=1001;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
