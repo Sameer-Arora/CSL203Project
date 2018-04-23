@@ -17,7 +17,7 @@ $(document).ready(function(){
             var cv_id = widget.attr('id');
 
             var da="cv_id="+cv_id+"&fetch=2";
-            alert (da);
+            //alert (da);
 
             $.ajax({
                 type:"POST",
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
                 },
                 error: function (data) {
-                    alert("error");
+                    //alert("error");
                     Callback(data);
                     //Callback("Error getting the data");
                 }
@@ -49,7 +49,7 @@ $(document).ready(function(){
             var cv_id = widget.attr('id');
 
             var da="cv_id="+cv_id+"&clicked_on="+clicked_on;
-            alert (da);
+            //alert (da);
 
             $.ajax({
                 type:"POST",
@@ -61,7 +61,7 @@ $(document).ready(function(){
                     set_votes(widget,data);
                 },
                 error: function (data) {
-                    alert("error");
+                    //alert("error");
                     Callback(data);
                     //Callback("Error getting the data");
                 }
@@ -91,7 +91,7 @@ $(document).ready(function(){
     function Callback(data)
     {
         console.log(data);
-        alert(data);
+        //alert(data);
     }
 
     function set_votes(widget,data) {
@@ -100,9 +100,9 @@ $(document).ready(function(){
     var avg =values['avg_rating'] ;
     var votes = values['no_votes'];
     
-    alert(avg); 
+    //alert(avg); 
     console.log(avg);   
-    alert(votes);
+    //alert(votes);
     console.log(votes);   
 
     $(widget).find('.star_' + avg).prevAll().andSelf().attr("src","./images/star_f.png");
