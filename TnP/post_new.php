@@ -30,7 +30,7 @@ $link       = mysqli_real_escape_string($connection,$_POST['message']);
 $person_id  = 1;
 
 $message = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br/>",$message);
-$link = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br/>",$link);
+// $link = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br/>",$link);
 
 $sql = "INSERT INTO posts (person_id, subject, link, body) VALUES ('".$person_id."','".$subject."','".$link."','".$message."')"; 
 $executed=run_query($connection,$sql);

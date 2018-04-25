@@ -214,10 +214,16 @@
 	</style>
 
 
+<style>
+	.fh5co-bg-section {
+		padding: 0;
+	}
+</style>
 
 
 
-		<div class="container">
+	<div id="fh5co-testimonial" class="fh5co-bg-section">
+		<div class="col-md-12 text-center">
 			<?php 
 				// include("post_new.html");
 				// session_start();
@@ -255,7 +261,7 @@
 		    
 		    
 		</div>
-
+	</div>
 
 <!-- 
 	</body>
