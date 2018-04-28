@@ -19,7 +19,7 @@ CREATE TABLE posts (
 	link VARCHAR(400),
 	body TEXT NOT NULL,
 	date_time TIMESTAMP,
-	FOREIGN KEY (person_id) REFERENCES auth(person_id),
+	FOREIGN KEY (person_id) REFERENCES auth(person_id) ON DELETE CASCADE,
 	PRIMARY KEY (post_id)
 );
 
@@ -28,8 +28,8 @@ CREATE TABLE followed_posts (
 	follow_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
 	post_id SMALLINT UNSIGNED NOT NULL,
 	person_id SMALLINT UNSIGNED NOT NULL,
-	FOREIGN KEY (post_id) REFERENCES posts(post_id),
-	FOREIGN KEY (person_id) REFERENCES auth(person_id),
+	FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
+	FOREIGN KEY (person_id) REFERENCES auth(person_id) ON DELETE CASCADE,
 	PRIMARY KEY (follow_id)
 );
 
@@ -41,6 +41,16 @@ CREATE TABLE feedbacks (
 	PRIMARY KEY (feedback_id)
 );
 
+CREATE TABLE company (
+	company_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	company_name VARCHAR(50),
+	company_link TEXT,
+	apply_date DATE,
+	interview_date DATE,
+	branch VARCHAR(100),
+	message TEXT,
+	PRIMARY key (company_id)
+);
 
 -- store the details of upvote and downvote of the posts --
 /*CREATE TABLE vote (

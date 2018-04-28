@@ -139,7 +139,7 @@ function redirect($url) {
 
 $_SESSION['post_id'] = $query_string ;
 
-redirect("test.php");
+redirect("test_d.php");
 
 
 

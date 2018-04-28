@@ -1,6 +1,7 @@
 <?php 
 // include("post_new.html");
-
+@ob_start();
+session_start();
 include ("db_conn.php");
 
 /*echo "string";
@@ -32,7 +33,7 @@ $person_id  = 1;
 $message = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br>",$message);
 // $link = str_replace(array("\r\n","\r","\n","\\r","\\n","\\r\\n"),"<br>",$link);
 
-$sql = "INSERT INTO posts (person_id, subject, link, body) VALUES ('".$person_id."','".$subject."','".$link."','".$message."')"; 
+$sql = "UPDATE posts SET subject = '".$subject."', link = '".$link."', body = '".$message."' WHERE post_id = " . $_SESSION['post_id']. "";  
 $executed=run_query($connection,$sql);
 
 
@@ -57,7 +58,7 @@ function redirect($url) {
     die();
 }
 
-redirect("latest_feeds.php")
+redirect("posted_posts.php")
 
 
 
