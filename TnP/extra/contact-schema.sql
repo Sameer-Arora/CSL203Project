@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS feedback;
+CREATE DATABASE feedback;
+USE feedback;
+
+CREATE TABLE feedbacks (
+	person_id	SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	name VARCHAR(45),
+	email VARCHAR(45),
+	content TEXT NOT NULL,
+	PRIMARY KEY (person_id)
+);
