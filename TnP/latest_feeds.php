@@ -1,7 +1,5 @@
 <?php 
-@ob_start();
-session_start();
-// include ("latest_feeds.html");
+include ("session.php");
 include ("db_conn.php");
 
 function run_query($connection,$query){
@@ -18,7 +16,7 @@ function run_query($connection,$query){
 
 
 
-include ("latest_feeds_1.html");
+include ("header.php");
 
 
 
@@ -102,7 +100,7 @@ else
 }
 
 
-include ("latest_feeds_2.html");
+include ("footer.php");
 
 // $time_now=mktime(date('h')+5,date('i')+30,date('s'));
 // $date = date('d-m-Y h:i:sa', $time_now);
