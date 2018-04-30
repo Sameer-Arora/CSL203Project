@@ -19,7 +19,7 @@ $(document).ready(function () {
 
                 var da="cv_letter_id="+cv_letter_id+"&share="+1;
 
-                alert (da);
+                //alert (da);
 
                 $.ajax({
                     type:"POST",
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
                 var da="cv_letter_id="+cv_letter_id+"&share="+0;
 
-                alert (da);
+                //alert(da);
 
                 $.ajax({
                     type:"POST",

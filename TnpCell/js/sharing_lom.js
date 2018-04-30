@@ -19,7 +19,7 @@ $(document).ready(function () {
 
                 var da="lom_id="+lom_id+"&share="+1;
 
-                alert (da);
+                //alert(da);
 
                 $.ajax({
                     type:"POST",
@@ -30,7 +30,7 @@ $(document).ready(function () {
                         Callback(data);
                     },
                     error: function (data) {
-                        alert("error");
+                        //alert("error");
                         Callback(data);
                     //Callback("Error getting the data");
                 }
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
                 var da="lom_id="+lom_id+"&share="+0;
 
-                alert (da);
+                //alert(da);
 
                 $.ajax({
                     type:"POST",
@@ -57,7 +57,7 @@ $(document).ready(function () {
                         Callback(data);
                     },
                     error: function (data) {
-                        alert("error");
+                        //alert("error");
                         Callback(data);
                     //Callback("Error getting the data");
                 }
@@ -71,11 +71,11 @@ $(document).ready(function () {
             function Callback(data)
             {
                 console.log(data);
-                alert(data);
+                //alert(data);
                /* var values=deparam(data);
                 console.log(values);
                 var  lom_id=values['lom_id'] ;
-                alert(lom_id);
+                //alert(lom_id);
                 $("#"+lom_id).remove();
                 $('.scroll').slick('unslick').slick('reinit');
 */
