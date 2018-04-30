@@ -69,7 +69,7 @@
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
 						<li class="active"><a href="index.php">Home</a></li>
-						<?php if(!isset($_SESSION['person_id'])): ?>
+						<?php if(isset($_SESSION['person_id'])): ?>
 							<li class="has-dropdown">
 								<a href="latest_feeds.php">Latest Feed</a>
 								<ul class="dropdown">
@@ -143,7 +143,7 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>LATEST UPDATES</h1>
+							<h1>TnP Portal</h1>
 							<!-- <h2>Get latest updates on <a href="index.php" target="_blank">TnP Portal</a></h2> -->
 							<div class="row">
 								<form class="form-inline" id="fh5co-header-subscribe">
@@ -151,7 +151,10 @@
 										<div class="form-group">
 											<!-- <input type="text" class="form-control" id="email" placeholder="Enter your email"> -->
 											<div class="col-md-6 col-sm-6">
-												<a href="post_new.php" class="btn btn-default btn-block">Post New</a>
+												<?php if(!isset($_SESSION['person_id'])): ?>
+												<?php else: ?>
+													<a href="register.php" class="btn btn-default btn-block">Register Now</a>
+												<?php endif; ?>
 											</div>										
 										</div>
 									</div>
