@@ -1,0 +1,10 @@
+amazon	   https://www.amazon.in/  2018-10-12   2018-10-20    CSE   check message ok ok
+flipkart   https://www.flipkart.com/  2018-10-12   2018-10-20    CSE   check message ok ok
+samsung	   http://www.samsung.com/in/  2018-10-12   2018-10-20    CSE   check message ok ok
+microsoft   https://www.microsoft.com/en-in  2018-10-12   2018-10-20    CSE   check message ok ok
+arista	   https://www.arista.com/en/  2018-10-12   2018-10-20    CSE   check message ok ok
+bookmyshow   https://in.bookmyshow.com/  2018-10-12   2018-10-20    CSE   check message ok ok
+infosys	   https://www.infosys.com/  2018-10-12   2018-10-20    CSE   check message ok ok
+zomato	   https://www.zomato.com/india  2018-10-12   2018-10-20    CSE   check message ok ok
+snapdeal   https://www.snapdeal.com/  2018-10-12   2018-10-20    CSE   check message ok ok
+oracle	   https://www.oracle.com/in/index.html  2018-10-12   2018-10-20    CSE   check message ok ok

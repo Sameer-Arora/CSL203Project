@@ -1,0 +1,13 @@
+10m0(Build:2)
+
+Rethrow
+
+Rethrow
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/sfxbasemodel.cxx:1698: storeToURL
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/objstor.cxx:1116: Begin
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/objstor.cxx:1317: SaveAs/Export
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/objstor.cxx:1330: Locking
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/docfile.cxx:918: 
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/objstor.cxx:2868: 
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/objmisc.cxx:260: Resetting Error.
+/build/libreoffice-U6xVVt/libreoffice-5.1.6~rc2/sfx2/source/doc/sfxbasemodel.cxx:3122: Storing failed!

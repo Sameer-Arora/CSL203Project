@@ -1,0 +1,62 @@
+
+	
+	<div id="fh5co-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-md-push-1 animate-box">
+					
+					<div class="fh5co-contact-info">
+						<h3>Contact Information</h3>
+						<ul>
+							<li class="address">Indian Institute of Technology Ropar, <br> Nangal Road, Rupnagar,  <br> Punjab, INDIA 140001</li>
+							<li class="phone"><a href="tel://1881-227078">+91-1881-227078</a></li>
+							<li class="email"><a href="mailto:shreyanshushekhar7@gmail.com">contact us</a></li>
+							<li class="url"><a href="http://www.iitrpr.ac.in/" target="_blank">iitrpr.ac.in</a></li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-6 animate-box">
+					<h3>Feedback	</h3>
+					<form action="contact1.php" method="post">
+						<div class="row form-group">
+							<div class="col-md-12">
+								<!-- <label for="fname">First Name</label> -->
+								<input name="name" type="text" id="name" class="form-control" placeholder="Your Name">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+								<!-- <label for="email">Email</label> -->
+								<input name="email" type="text" id="email" class="form-control" placeholder="Your email address">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+								<!-- <label for="message">Message</label> -->
+								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us **" value="" required></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Send" class="btn btn-primary">
+						</div>
+						<p>** this field is required</p>
+
+					</form>		
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+	window.onload = function() 
+	{ 
+    document.getElementsById('message').setAttribute('required','required');
+}
+</script>
+
+

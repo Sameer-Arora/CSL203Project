@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui.theme.min.css">
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery.fileDownload.js"></script>
+    <script type="text/javascript">
+
+        $(document).on("click", ".button", function () {
+            //SetCookie(new HttpCookie("fileDownload", "true");
+
+            //response.AppendHeader("content-disposition", "fileDownload=true
+            $.fileDownload($(this).prop('href'), {
+                preparingMessageHtml: "We are preparing your report, please wait...",
+                failMessageHtml: "There was a problem generating your report, please try again."
+            });
+            return false; //this is critical
+        });
+    </script>
+
+</head>
+
+<body>
+<input type="button" class="button" value="Download">
+<a href="download.php">Tray</a>
+</body>
+</html>

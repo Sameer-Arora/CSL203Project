@@ -1,0 +1,11 @@
+! Package inputenc Error: Unicode char ﬁ (U+FB01)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.130 difﬁ
+
+Try running pandoc with --latex-engine=xelatex.
+pandoc: Error producing PDF

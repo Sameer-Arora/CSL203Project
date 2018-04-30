@@ -1,0 +1,36 @@
+#sahilTable {
+    font-family: Poppins-Bold;
+    src: url('../fonts/poppins/Poppins-Bold.ttf');
+    border-collapse: collapse;
+    width: 80%;
+}
+
+#sahilTable td, #sahilTable th {
+    
+    padding: 18px;
+    text-align: center;
+}
+#sahilTable td{
+  border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+}
+
+body{
+  background-color: rgb(196, 211, 246);
+}
+#sahilTable tr{
+
+  background-color: #fff;
+    border: 1px solid #ddd;
+}
+#sahilTable tr:hover {background-color: #ddd;}
+
+#sahilTable th {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    text-align: center;
+    background-color: rgb(108, 122, 224);
+    color: white;
+}
+

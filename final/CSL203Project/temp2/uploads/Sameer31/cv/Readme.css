@@ -1,0 +1,18 @@
+
+	@page {  }
+	table { border-collapse:collapse; border-spacing:0; empty-cells:show }
+	td, th { vertical-align:top; font-size:12pt;}
+	h1, h2, h3, h4, h5, h6 { clear:both }
+	ol, ul { margin:0; padding:0;}
+	li { list-style: none; margin:0; padding:0;}
+	<!-- "li span.odfLiEnd" - IE 7 issue-->
+	li span. { clear: both; line-height:0; width:0; height:0; margin:0; padding:0; }
+	span.footnodeNumber { padding-right:1em; }
+	span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }
+	* { margin:0;}
+	.First_20_Paragraph { font-size:12pt; margin-bottom:0.1252in; margin-top:0.1252in; text-align:left ! important; font-family:Cambria; writing-mode:lr-tb; }
+	.P1 { color:#345a8a; font-size:18pt; font-weight:bold; margin-bottom:0.1665in; margin-top:0.3335in; text-align:center ! important; font-family:Calibri; writing-mode:lr-tb; }
+	.Text_20_body { font-size:12pt; margin-bottom:0.1252in; margin-top:0.1252in; text-align:left ! important; font-family:Cambria; writing-mode:lr-tb; }
+	<!-- ODF styles with no properties representable as CSS -->
+	 { }
+	
