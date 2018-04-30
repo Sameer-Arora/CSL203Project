@@ -139,7 +139,7 @@
                           <option value="0">Domestic internship</option>
                         </select>
                       </div>
-                      <input type="submit" value="Submit">
+                      <button type="submit" class="btn btn-default" style="margin-top:20px;margin-bottom:20px;">Submit</button>
                     </form>
                         
                      <table id="sahilTable" width="80%">

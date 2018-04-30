@@ -60,7 +60,7 @@
     <div class="fh5co-loader"></div>
    
     <div id="page">
-    <nav class="fh5co-nav" role="navigation" style="background-image:url(images/Elegant_Background-9.jpg);">
+    <nav class="fh5co-nav" role="navigation">
         <div class="container">
             <div class="row">
                 <div class="col-xs-2">
@@ -95,19 +95,35 @@
         </div>
     </nav>
 
+<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/Elegant_Background-9.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <div class="display-t">
+                        <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                            <h1>Placement Opportunities</h1>
+                            <div class="row">
+                                <form class="form-inline" id="fh5co-header-subscribe">
+                                    <div class="col-md-6 col-md-offset-2">
+                                        <div class="form-group">
+                                            <!-- <input type="text" class="form-control" id="email" placeholder="Enter your email"> -->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
 
-                    
-
-
-
-
-
-
-<div id="fh5co-servicessahil" class="fh5co-bg-sectionsahil">
-        <div class="containersahil" style="margin-top:200px;margin-bottom:200px;">
-            <div class="rowsahil" >
-                    <center>
+<div id="fh5co-core-feature" style="width:100%;">
+        <div class="container" style="width:100%;">
+            <div class="row" style="width:100%;">
+                <center>
                     <form action="placementAfterFilter.php" align="center" style="margin-bottom:10px;">
                           <!--<p> SORT BY: </p>-->
                           <div id="search_categories">
@@ -124,7 +140,7 @@
                           <option value="0">Domestic internship</option>
                         </select>
                         </div>
-                      <input type="submit" value="Submit">
+                      <button type="submit" class="btn btn-default" style="margin-top:20px;margin-bottom:20px;">Submit</button>
                     </form>
                         
                      <table id="sahilTable" width="80%">
@@ -167,6 +183,21 @@
                   <h3 style='margin-top:20px;'>Got a placement detail?</h3>
                   <a href='addtoplacementdb.php' style="font-size:25px;">click here to add</a>
                 </center>
+            </div>
+        </div>
+    </div>
+
+                    
+
+
+
+
+
+
+<div id="fh5co-servicessahil" class="fh5co-bg-sectionsahil">
+        <div class="containersahil" style="margin-top:200px;margin-bottom:200px;">
+            <div class="rowsahil" >
+                    
             </div>
         </div>
 </div>

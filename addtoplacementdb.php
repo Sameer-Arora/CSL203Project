@@ -103,16 +103,9 @@
         <div class="containersahil" style="margin-top:200px;margin-bottom:200px;">
             <div class="rowsahil">
 <div id='formsahil2'><center>
-                <form action="addtodb.php" method="get" id="formsahil" name="Form">
-                    <input type="text" name="hidName" placeholder="Internship's name.." value="" required>
+                <form action="addtoplacementdb.php" method="get" id="formsahil" name="Form">
+                    <input type="text" name="hidName" placeholder="Placement's name.." value="" required>
                         
-                        <select name="hidYear" value="" required>
-                          <option value="">--Year--</option>        
-                          <option value="1">1st year</option>
-                          <option value="2">2nd year</option>
-                          <option value="3">3rd year</option>
-                          <option value="4">4th year</option>
-                        </select>
                         <select name="hidBranch" value="" required>
                           <option value="">--Branch--</option>
                           <option value="cse">Computer Science</option>
@@ -120,27 +113,16 @@
                           <option value="me">Mechanical Engg.</option>
                           <option value="ce">Civil Engg.</option>
                         </select>
-                        <select name="hidMonth" value="" required>
-                          <option value="">--Duration--</option>        
-                          <option value="1">1 month</option>
-                          <option value="2">2 months</option>
-                          <option value="3">3 months</option>
-                          <option value="4">4 months</option>
-                        </select>
-                        <select name="hidSummerORwinter" value="" required>
-                          <option value="">--Summer/Winter--</option>
-                          <option value="1">Summer Internship</option>
-                          <option value="0">Winter Internship</option>
-                        </select>
+                        
                        <input type="text" name="hidPlace" placeholder="Location..."  value="" required>
                         <select name="hidAbroadORnot" value="" required>
                           <option value="">--Abroad/Domestic--</option>
-                          <option value="1">Abroad internship</option>
-                          <option value="0">Domestic internship</option>
+                          <option value="1">Abroad placement</option>
+                          <option value="0">Domestic placement</option>
                         </select>
                         <input type="text" name="hidWebsite" placeholder="website link..." value="" required>
                   
-                    <div class="form-group">
+                    <div class="form-group" >
                             <input type="submit" value="Submit" class="btn btn-primary">
                     </div>
                 </form>
@@ -148,8 +130,8 @@
 
             <?php
                         include('databaseConnection.php');
-                        $query = "insert into internshipTable values(" . $_GET[hidAbroadORnot] . ",'" . $_GET[hidName] . "'," . $_GET[hidMonth] . ",'" . $_GET[hidBranch] . "'," . $_GET[hidYear] . ",'" . $_GET[hidPlace] . "'," . $_GET[hidSummerORwinter] . ",'" . $_GET[hidWebsite] . "')";
-                        $query2 = "select * from internshipTable where isAbroad=" . $_GET[hidAbroadORnot] . " and name='" .$_GET[hidName] . "' and duration=" .$_GET[hidMonth] . " and year=" .$_GET[hidYear] . " and place='" .$_GET[hidPlace] . "' and time=" .$_GET[hidSummerORwinter] . " and website='" .$_GET[hidWebsite] . "' and department='" .$_GET[hidBranch] . "'";
+                        $query = "insert into placementTable values(" . $_GET[hidAbroadORnot] . ",'" . $_GET[hidName] . "','". $_GET[hidBranch] . "','". $_GET[hidPlace] . "','". $_GET[hidWebsite] . "')";
+                        $query2 = "select * from placementTable where isAbroad=" . $_GET[hidAbroadORnot] . " and name='" .$_GET[hidName] . "' and place='" .$_GET[hidPlace] . "' and website='" .$_GET[hidWebsite] . "' and department='" .$_GET[hidBranch] . "'";
                         $result2 = mysqli_query($connection,$query2);
                         if (mysqli_num_rows($result2)!=0){
                             echo "<script type='text/javascript'>alert('This entry already exists')</script>";
