@@ -7,7 +7,7 @@ include ('session.php');
 // }
 
 include 'header.php';
-include 'contact.html';
+include 'about.html';
 include 'footer.php';
 
 

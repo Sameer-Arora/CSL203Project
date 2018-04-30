@@ -3,9 +3,7 @@
 
 
 <?php 
-@ob_start();
-// session_start();
-// include ("latest_feeds.html");
+
 include ("db_conn.php");
 
 function run_query($connection,$query){
