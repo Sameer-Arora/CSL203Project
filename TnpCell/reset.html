@@ -1,0 +1,87 @@
+
+
+
+
+
+<div class="login-wrap">
+<div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Forgot Password</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up" ><label for="tab-2" class="tab">Reset Password</label>
+       <input id="tab-3" type="radio" name="tab" class="sign-up1"><label for="tab-3" class="tab">        </label>
+
+       <div class="login-form">
+
+                <div class="sign-in-htm">
+                    
+                  <form id="login_form" onsubmit="return validateForm(this);" action="mailchk.php" method="post" accept-charset="utf-8" >
+                    
+                        <div class="group">
+                                <label for="user" class="label">Email</label>
+                               <input name="email" id="lo_email" type="text" class="input" required pattern="^.{0,64}$" title="Enter an email address with a maximum of 64 characters." oninput="validateEmail(this);" onchange="validateEmail(this);" " maxlength="64"  >
+
+                        </div>
+                        
+                        <div class="group">
+                                <input id="check" type="checkbox" class="check" checked>
+                                <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Reset Password">
+                        </div>
+
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <p id="error"> </p>
+                            <p><strong><h3>Enter Your Email!</h3></strong></p>
+                            <a></a>
+                        </div>
+
+                  </form>
+                </div>
+                
+                <div class="sign-up-htm">
+        
+                  <form id="login_form" onsubmit="return validateForm(this);" action="./test/change_pass.php" method="post" accept-charset="utf-8" >
+                    
+                        <div class="group">
+                                <label for="user" class="label">Email</label>
+                               <input name="email" id="lo_email" type="text" class="input" required pattern="^.{0,64}$" title="Enter an email address with a maximum of 64 characters." oninput="validateEmail(this);" onchange="validateEmail(this);" " maxlength="64"  >
+
+                        </div>
+                        <div class="group">
+                                <label for="pass" class="label">Old Password</label>
+                                  <input name="password" id="pass" type="password" class="input" data-type="password" autocomplete="false" required pattern="^((?=.*[0-9])(?=.*[a-zA-Z])).{6,12}$" title="Enter your correct password between 6 and 12 characters, containing at least one letter and one number."  oninput="validatePassword(this);" onchange="validatePassword(this);" maxlength="12"  >
+
+                        </div>
+
+
+                        <div class="group">
+                                <label for="pass1" class="label">New Password</label>
+                                  <input name="new_password" id="pass1" type="password" class="input" data-type="password" autocomplete="false" required pattern="^((?=.*[0-9])(?=.*[a-zA-Z])).{6,12}$" title="Enter your correct password between 6 and 12 characters, containing at least one letter and one number."  oninput="validatePassword(this);" onchange="validatePassword(this);" maxlength="12"  >
+
+                        </div>
+
+                        <div class="group">
+                                <input id="check" type="checkbox" class="check" checked>
+                                <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                                <input type="submit" class="button" value="Confirm Password">
+                        </div>
+
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <p id="error"> </p>
+                            <p><strong><h3>Set your New Password!</h3></strong></p>
+                            <a></a>
+                        </div>
+
+                  </form>
+
+                </div>
+
+           <div class="sign-up1-htm">
+                </div>
+        </div>
+
+<script src="./js/login.js" type="text/javascript" charset="utf-8" ></script>

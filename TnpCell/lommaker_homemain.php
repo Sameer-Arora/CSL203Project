@@ -196,13 +196,13 @@ and open the template in the editor.
 
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { 
-             #echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             #echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              ?>
             
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body <?php echo $row['type'];?>" id="<?php echo $row['cv_id'];?>"  >
+                  <div class="card-body <?php echo $row['type'];?>" id="<?php echo $row['lom_id'];?>"  >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -259,12 +259,12 @@ and open the template in the editor.
 
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
              <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['lom_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -308,13 +308,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['lom_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -356,13 +356,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['lom_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -404,13 +404,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['lom_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -450,13 +450,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['lom_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -496,13 +496,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['lom_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['lom_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -535,7 +535,7 @@ and open the template in the editor.
       
   </div>
 
-<?php include('footer.html'); ?>
+<?php include('footer.php'); ?>
 
  </body>
 

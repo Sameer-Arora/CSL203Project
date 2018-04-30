@@ -60,7 +60,7 @@ $('.card-img-top').hover(
         function() {
 
           var opt= $(this).parentsUntil(".card-content").children('.options').find(".option");
-          //alert(opt);
+          ////alert(opt);
           opt.toggle(10);
 
         }
@@ -132,7 +132,7 @@ $("form#upload").submit(function(e) {
       upl_callback(data)
     },
     error: function (data) {
-                    //alert("error");
+                    ////alert("error");
                     Callback(data);
                     //Callback("Error getting the data");
                   },    
@@ -147,11 +147,11 @@ $("form#upload").submit(function(e) {
 function upl_callback(data)
 {
   console.log(data);
-  alert(data);
+  //alert(data);
   var values=deparam(data);
   console.log(values);
   var  doc_added=values['doc_added'];
-  alert(doc_added);
+  //alert(doc_added);
 
   if(doc_added){
 
@@ -242,7 +242,7 @@ $('.row').on('click',".fa-edit", function() {
     value: lom_id
     }).appendTo(form);
     var formData = new FormData(form);
-    alert(form.serialize() );
+    //alert(form.serialize() );
     form.submit();
 
 }); 
@@ -269,7 +269,7 @@ $('.row').on('click',".fa-trash", function() {
         del_callback(data);
       },
       error: function (data) {
-                    //alert("error");
+                    ////alert("error");
                     del_callback(data);
                     //del_callback("Error getting the data");
                   }
@@ -280,11 +280,11 @@ $('.row').on('click',".fa-trash", function() {
    function del_callback(data)
    {
     console.log(data);
-    alert(data);
+    //alert(data);
     var values=deparam(data);
     console.log(values);
     var  lom_id=values['lom_id'] ;
-    alert(lom_id);
+    //alert(lom_id);
     $("#"+lom_id).remove();
     $('#your').slick('unslick').slick(reinit());
   }

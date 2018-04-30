@@ -9,7 +9,7 @@ $_SESSION['cv_id']=$_POST['cv_id'];
 
 
 $query ="SELECT * from cv where cv_id=".$_SESSION['cv_id'];
-echo $_POST['cv_id'];
+#echo $_POST['cv_id'];
 
 ?>
 
@@ -19,13 +19,13 @@ echo $_POST['cv_id'];
           $strSQL=mysqli_query($connection,$query);
 
           if( $strSQL ){
-            echo "<br>"."exec<br>";
+            #echo "<br>"."exec<br>";
             $row=mysqli_fetch_array($strSQL);
 
             $css=$row['css_file'];
 
             $load=$row['load_file'];
-            echo $row['load_file'];
+            #echo $row['load_file'];
             
             $_SESSION['html_file']=$row['load_file'];
 
@@ -39,10 +39,10 @@ echo $_POST['cv_id'];
 */
               $text=preg_replace('/\n/','',$text );
 
-              #echo $text;
+              ##echo $text;
            }
          else{
-      echo "<br>"."Error".$connection->error;
+      #echo "<br>"."Error".$connection->error;
          }
           }
         ?>

@@ -20,7 +20,7 @@ $zipfileType = $_FILES["latexfile"]["type"];//the type of file
 $zipfileSize = $_FILES["latexfile"]["size"];//file size in bytes
 $zipfileErrorMsg = $_FILES["latexfile"]["error"];//0 for false and 1 for true
 
-$command = 'mkdir -p uploads/%s%s/cv/';
+$command = 'mkdir -p uploads/%s%s/cv_letter/';
 
 $command = sprintf($command,$_SESSION['name'],$_SESSION['person_id']);
 #echo "<br>".$command;
@@ -34,15 +34,15 @@ foreach($output as $value){
 }
 
 
-$target_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/". basename( $_FILES["fileToUpload"]["name"]); 
+$target_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/". basename( $_FILES["fileToUpload"]["name"]); 
 
-$ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/". basename( $_FILES["latexfile"]["name"]); 
+$ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/". basename( $_FILES["latexfile"]["name"]); 
 
 #echo "<br>"."file name: $fileName </br> temp file location: $fileTmpLoc<br/> file type: $fileType<br/> file size: $fileSize<br/> file upload target: $target_path<br/> file error msg: $fileErrorMsg<br/>";
 
 //START PHP Image Upload Error Handling---------------------------------------------------------------------------------------------------
 
- putenv('HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv/");
+ putenv('HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv_letter/");
 
     if(!$fileTmpLoc)//no file was chosen ie file = null
     {
@@ -143,18 +143,17 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                             }
                             else{
 
-                                $my_file = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".pdf";
-
+                                
 
                                 exec("convert ~/\"".$Name.".pdf[0]\" ~/\"".$Name.".jpeg\" ", $output,$result_var );
                                 
                                 exec("touch ~/".$Name.".css ", $output,$result_var );
 
-                                $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".jpeg";
+                                $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".jpeg";
 
-                                $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".docx";
-                                $htmlfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".html";
-                                $cssfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".css";
+                                $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".docx";
+                                $htmlfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".html";
+                                $cssfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".css";
 
                                 #echo "<br>".$imagePath;
                                 #echo "<br>".$result_var."<br>";
@@ -208,7 +207,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                     
                                     
 
-                                    $query ="UPDATE cv set time_updated = now(), image='".$imagePath."', load_file='".$htmlfilePath."' where person_id=".$person_id." and file_link='".$path."'";
+                                    $query ="UPDATE cv_letter set time_updated = now(), image='".$imagePath."', load_file='".$htmlfilePath."' where person_id=".$person_id." and file_link='".$path."'";
 
                                     $execute=run_query($connection,$query);
 
@@ -217,7 +216,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                         #echo "<br>".$message;
                                     }else{
                                         
-                                      $query ="Select cv_id from cv  where file_link='".$path."'";
+                                      $query ="Select cv_letter_id from cv_letter  where file_link='".$path."'";
 
                                       $strSQL=mysqli_query($connection,$query);
 
@@ -238,8 +237,8 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
 
                                       }
 
-                                      $cv_id=$resultset['cv_id'];
-                                      #echo $cv_id;
+                                      $cv_letter_id=$resultset['cv_letter_id'];
+                                      #echo $cv_letter_id;
                                        $message="Updated, file already exists.";
                                         #echo "<br>"."Updated, file already exists.";
                                         
@@ -356,15 +355,14 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                 }
                                 else{
 
-                                    $my_file = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".pdf";
-
+                                    
 
                                     exec("convert ~/\"".$Name.".pdf[0]\" ~/\"".$Name.".jpeg\" ", $output,$result_var );
 
-                                    $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".jpeg";
-                                    $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".docx";
-                                    $htmlfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".html";
-                                    $cssfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".css";
+                                    $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".jpeg";
+                                    $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".docx";
+                                    $htmlfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".html";
+                                    $cssfilePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".css";
 
                                     #echo "<br>".$imagePath;
                                     #echo "<br>".$result_var."<br>";
@@ -403,6 +401,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                         foreach($output as $value){
                                             #echo "<br>".$value . "<br>";
                                         }
+                                        
                                         /*preg_match('/<body.*?>[\s\S]*?<\/body>/', $text, $matches, PREG_OFFSET_CAPTURE);
                                         $html= $matches[0][0];
                                         $html=preg_replace('/"[ ]*\/>/','">',$html );
@@ -417,7 +416,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                         
                                         
 
-                                        $query ="INSERT INTO cv (time_updated, person_id, file_link, department, type , title,image,load_file,css_file) values( now() ,".$person_id.",'".$path."','".$department."','".$type."','".$fileName."','".$imagePath."','".$htmlfilePath."','".$cssfilePath."')";
+                                        $query ="INSERT INTO cv_letter (time_updated, person_id, file_link, department, type , title,image,load_file,css_file) values( now() ,".$person_id.",'".$path."','".$department."','".$type."','".$fileName."','".$imagePath."','".$htmlfilePath."','".$cssfilePath."')";
 
 
 
@@ -429,7 +428,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                         }else{
                                             $message = "Added document successfully!! ";
                                             #echo "<br>".$message;
-                                            $cv_id=mysqli_insert_id($connection);
+                                            $cv_letter_id=mysqli_insert_id($connection);
                                             $doc_added=true;
                                         }
                                      }   
@@ -498,9 +497,9 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
 
                             exec("convert ~/\"".$Name.".pdf[0]\" ~/\"".$Name.".jpeg\" ", $output,$result_var );
 
-                            $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".jpeg";
+                            $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".jpeg";
 
-                            $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$zipfileName;
+                            $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$zipfileName;
 
                             #echo "<br>".$imagePath;
                             #echo "<br>".$result_var."<br>";
@@ -536,7 +535,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                 
                                 
 
-                                $query ="UPDATE cv set time_updated = now(), image='".$imagePath."' where person_id=".$person_id." and file_link='".$path."'";
+                                $query ="UPDATE cv_letter set time_updated = now(), image='".$imagePath."' where person_id=".$person_id." and file_link='".$path."'";
 
                                 $execute=run_query($connection,$query);
 
@@ -545,7 +544,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                     #echo "<br>".$message;
                                 }else{
                                     
-                                  $query ="Select cv_id from cv  where file_link='".$path."'";
+                                  $query ="Select cv_letter_id from cv_letter  where file_link='".$path."'";
 
                                   $strSQL=mysqli_query($connection,$query);
 
@@ -566,8 +565,8 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
 
                                   }
 
-                                  $cv_id=$resultset['cv_id'];
-                                  #echo $cv_id;
+                                  $cv_letter_id=$resultset['cv_letter_id'];
+                                  #echo $cv_letter_id;
                                    $message="Updated, file already exists.";
                                     #echo "<br>"."Updated, file already exists.";
                                     
@@ -653,13 +652,12 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                 $target_path=escapeshellcmd($target_path);
                                 
 
-                                $my_file = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".pdf";
-
+                                
 
                                 exec("convert ~/\"".$Name.".pdf[0]\" ~/\"".$Name.".jpeg\" ", $output,$result_var );
 
-                                $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$Name.".jpeg";
-                                $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv/".$zipfileName;
+                                $imagePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$Name.".jpeg";
+                                $filePath="./uploads/".$_SESSION['name'].$_SESSION['person_id']."/cv_letter/".$zipfileName;
 
                                 #echo "<br>".$imagePath;
                                 #echo "<br>".$result_var."<br>";
@@ -695,7 +693,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                     
                                     
 
-                                    $query ="INSERT INTO cv (time_updated, person_id, file_link, department, type , title,image) values( now() ,".$person_id.",'".$path."','".$department."','".$type."','".$fileName."','".$imagePath."')";
+                                    $query ="INSERT INTO cv_letter (time_updated, person_id, file_link, department, type , title,image) values( now() ,".$person_id.",'".$path."','".$department."','".$type."','".$fileName."','".$imagePath."')";
 
 
 
@@ -707,7 +705,7 @@ $ziptarget_path = "/var/www/html/CSL203Project/TnpCell/uploads/".$_SESSION['name
                                     }else{
                                         $message = "Added document successfully!! ";
                                         #echo "<br>".$message;
-                                        $cv_id=mysqli_insert_id($connection);
+                                        $cv_letter_id=mysqli_insert_id($connection);
                                         $doc_added=true;
                                     }
                                  }   
@@ -729,7 +727,7 @@ $author=$_SESSION['name'];
 
 if($doc_added){
   
-    echo "doc_added=true&message=".$message."&name=".$author."&cv_id=".$cv_id."&last_update=".date(DATE_RFC822)."&imagePath=".$imagePath."&title=".$fileName."&type=".$type ;
+    echo "doc_added=true&message=".$message."&name=".$author."&cv_letter_id=".$cv_letter_id."&last_update=".date(DATE_RFC822)."&imagePath=".$imagePath."&title=".$fileName."&type=".$type ;
 }
 else {
    

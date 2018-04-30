@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login Page:Internal Tnp Cell</title>
+        <title>Reset Password:Internal Tnp Cell</title>
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -34,7 +34,6 @@ and open the template in the editor.
             </button>
           </div>
           <div class="modal-body" style="color: red">
-            Error Occurred:<?php if(isset($_GET['message'])) echo $_GET['message'];?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -43,20 +42,27 @@ and open the template in the editor.
       </div>
     </div>
         <?php
-
-        require 'login.html';
-       
+        require 'reset.html';
         ?>
 
 
     <script>
         $(document).ready(function () {
+          <?php if(isset($_GET)): ?>
 
-            <?php if(!isset($_GET['message'])): ?>
-                $('#modal').modal('hide');
+            <?php if(!isset($_GET['mail_sent'])): ?>
+                $('#modal').modal('show');
+                $('#modal').find('.modal-body').css('color','red');
+                $('#modal').find('.modal-body').html('Error Occurred:<?php  echo $_GET["message"];?>');
+               
             <?php else: ?>
                 $('#modal').modal('show');
+                $('#modal').find('.modal-body').css('color','green');
+                $('#modal').find('.modal-body').html('Success :<?php  echo $_GET["message"];?>');
+                
+
             <?php endif; ?>
+          <?php endif; ?>
 
         });
 

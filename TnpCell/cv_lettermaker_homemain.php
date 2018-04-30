@@ -533,7 +533,7 @@ and open the template in the editor.
       
   </div>
 
-<?php include('footer.html'); ?>
+<?php include('footer.php'); ?>
 
  </body>
 
