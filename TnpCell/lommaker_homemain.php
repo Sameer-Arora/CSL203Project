@@ -8,7 +8,7 @@ and open the template in the editor.
 <html>
     <head>
 
-        <title>CV Maker:Text Document</title>
+        <title>LOM Maker:Text Document</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -50,9 +50,9 @@ and open the template in the editor.
   <script src="js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
 
 
-<script src="cvmaker_home.js" type="text/javascript"></script>
-<script src="js/rating.js" type="text/javascript"></script> 
-<script src="js/sharing.js" type="text/javascript"></script> 
+<script src="lommaker_home.js" type="text/javascript"></script>
+<script src="js/rating_lom.js" type="text/javascript"></script> 
+<script src="js/sharing_lom.js" type="text/javascript"></script> 
 <script src="./js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
 
 
@@ -90,7 +90,7 @@ and open the template in the editor.
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Search for CV's</a>
+      <a class="navbar-brand" href="#">Search for LOM's</a>
     </div>
 
     <form class="navbar-form navbar-right form" role="search" method ="get" action="">
@@ -146,7 +146,7 @@ and open the template in the editor.
                 <div class="card-content">
                   <div class="card-body">
 
-                    <form class="form" id="upload" action="upload.php" method="post" enctype="multipart/form-data">
+                    <form class="form" id="upload" action="uploadlom.php" method="post" enctype="multipart/form-data">
 
                       <div class="group">
                       <label for="department" class="label">Department</label>
@@ -212,7 +212,7 @@ and open the template in the editor.
                         <ul class="option">
                           <li><i class="fa fa-trash fa-2x "></i></li>
                           <?php if($row['type']=='Docx'){?>
-                            <li><form action="CV_maker.php" method="post"><i class="fa fa-edit fa-2x "></i></form></li>
+                            <li><form action="lom_maker.php" method="post"><i class="fa fa-edit fa-2x "></i></form></li>
                           <?php }?>
                           
                           <li> Share

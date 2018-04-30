@@ -8,6 +8,19 @@ else{
     header("Location:login.php?message=Please+login+session+timed+out");
 }
 
+if(isset($_GET['department'])){
+	if($_GET['author'] =="" ){
+		$search_query ="SELECT * from cv where department='".$_GET['department']."' and type='".$_GET['type']."' order by time_updated ";
+		#echo $search_query;
+	}
+	else{
+		$search_query ="SELECT * from cv INNER join auth USING(person_id) inner join student using(person_id) where department='".$_GET['department']."' and type='".$_GET['type']."' and name='".$_GET['name']."' order by time_updated ";
+		
+		#echo $search_query;
+	}
+
+}
+
 echo print_r($_POST);
 
 foreach ($_POST as $key => $value) {
@@ -15,17 +28,19 @@ foreach ($_POST as $key => $value) {
         echo $value."<br>";
 }
 
-$query ="SELECT * from cv where person_id=".$_SESSION['person_id']." order by time_updated limit 6";
+$query ="SELECT * from cv where person_id=".$_SESSION['person_id']." order by time_updated ";
 
-$cse_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated from cv inner join ratings using(cv_id) where department=\"CSE\" GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC limit 6";
+$cse_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated,cv.file_link from cv left join ratings using(cv_id) where department=\"CSE\" and share_option=1 GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC ";
 
-$ee_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated from cv inner join ratings using(cv_id) where department=\"EE\" GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC limit 6";
-$me_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated from cv inner join ratings using(cv_id) where department=\"ME\" GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC limit 6";
-$med_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated from cv inner join ratings using(cv_id) where department=\"MED\" GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC limit 6";
+$ee_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated,cv.file_link from cv left join ratings using(cv_id) where department=\"EE\" and share_option=1 GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC ";
+$me_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated,cv.file_link from cv left join ratings using(cv_id) where department=\"ME\" and share_option=1 GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC ";
+$med_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated,cv.file_link from cv left join ratings using(cv_id) where department=\"MED\" and share_option=1 GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC ";
 
-$ch_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated from cv inner join ratings using(cv_id) where department=\"CH\" GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC limit 6";
+$ch_query ="SELECT cv_id,SUM(ratings.cv_rate)/COUNT(ratings.cv_rate),cv.title,cv.image,cv.time_updated,cv.file_link from cv left join ratings using(cv_id) where department=\"CH\" and share_option=1 GROUP by cv_id order by SUM(ratings.cv_rate)/COUNT(ratings.cv_rate) DESC,time_updated DESC ";
+
 
 require('cvmaker_homemain.php');
+
 
 ?>
 

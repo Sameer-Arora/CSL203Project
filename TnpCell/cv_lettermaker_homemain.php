@@ -8,7 +8,7 @@ and open the template in the editor.
 <html>
     <head>
 
-        <title>CV Maker:Text Document</title>
+        <title>Cover Letter Maker:Text Document</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -50,9 +50,9 @@ and open the template in the editor.
   <script src="js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
 
 
-<script src="cvmaker_home.js" type="text/javascript"></script>
-<script src="js/rating.js" type="text/javascript"></script> 
-<script src="js/sharing.js" type="text/javascript"></script> 
+<script src="cv_lettermaker_home.js" type="text/javascript"></script>
+<script src="js/ratingcv_letter.js" type="text/javascript"></script> 
+<script src="js/sharingcv_letter.js" type="text/javascript"></script> 
 <script src="./js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
 
 
@@ -73,7 +73,6 @@ and open the template in the editor.
 </div>
  -->
 
-
 <div class="alert alert-danger alert-dismissible fade show hide " role="alert">
   <strong id="status" ></strong> <span id="message"></span>
   <button type="button" class="close" data-hide="alert"  aria-label="Close">
@@ -90,7 +89,7 @@ and open the template in the editor.
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Search for CV's</a>
+      <a class="navbar-brand" href="#">Search for Cover Letter's</a>
     </div>
 
     <form class="navbar-form navbar-right form" role="search" method ="get" action="">
@@ -146,7 +145,7 @@ and open the template in the editor.
                 <div class="card-content">
                   <div class="card-body">
 
-                    <form class="form" id="upload" action="upload.php" method="post" enctype="multipart/form-data">
+                    <form class="form" id="upload" action="upload_cv_letter.php" method="post" enctype="multipart/form-data">
 
                       <div class="group">
                       <label for="department" class="label">Department</label>
@@ -196,13 +195,13 @@ and open the template in the editor.
 
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { 
-             #echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             #echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              ?>
             
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body <?php echo $row['type'];?>" id="<?php echo $row['cv_id'];?>"  >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -214,7 +213,6 @@ and open the template in the editor.
                           <?php if($row['type']=='Docx'){?>
                             <li><form action="CV_maker.php" method="post"><i class="fa fa-edit fa-2x "></i></form></li>
                           <?php }?>
-                          
                           <li> Share
                             <label class="switch">
                               <?php 
@@ -259,12 +257,12 @@ and open the template in the editor.
 
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
              <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -272,7 +270,7 @@ and open the template in the editor.
                     </div>
                     <div class="options">
                         <ul class="option">
-                          <li><form method="post" action="download.php" class="download"><a href="<?php echo $row['file_link']; ?>" class="downloads" ><i class="fa fa-download fa-2x "></i></a></form></li>
+                          <li><form method="post" action="download_cv_letter.php" class="download"><a href="<?php echo $row['file_link']; ?>" class="downloads" ><i class="fa fa-download fa-2x "></i></a></form></li>
                         </ul>
                     </div>
                     <h4 class="card-title"><?php echo $row['title'] ?></h4>
@@ -308,13 +306,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -322,7 +320,7 @@ and open the template in the editor.
                     </div>
                     <div class="options">
                         <ul class="option">
-                          <li><form method="post" action="download.php" class="download"><a href="<?php echo $row['file_link']; ?>" class="downloads" ><i class="fa fa-download fa-2x "></i></a></form></li>
+                          <li><form method="post" action="download_cv_letter.php" class="download"><a href="<?php echo $row['file_link']; ?>" class="downloads" ><i class="fa fa-download fa-2x "></i></a></form></li>
                         </ul>
                     </div><!-- /.container-fluid -->
                     <h4 class="card-title"><?php echo $row['title'] ?></h4>
@@ -356,13 +354,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -370,7 +368,7 @@ and open the template in the editor.
                     </div>
                     <div class="options">
                         <ul class="option">
-                          <li><form method="post" action="download.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
+                          <li><form method="post" action="download_cv_letter.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
                           </ul>
                     </div><!-- /.container-fluid -->
                     <h4 class="card-title"><?php echo $row['title'] ?></h4>
@@ -404,13 +402,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -418,7 +416,7 @@ and open the template in the editor.
                     </div>
                     <div class="options">
                         <ul class="option">
-                          <li><form method="post" action="download.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
+                          <li><form method="post" action="download_cv_letter.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
                           </ul>
                     </div><!-- /.container-fluid -->
                     <h4 class="card-title"><?php echo $row['title'] ?></h4>
@@ -450,13 +448,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -464,7 +462,7 @@ and open the template in the editor.
                     </div>
                     <div class="options">
                         <ul class="option">
-                          <li><form method="post" action="download.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
+                          <li><form method="post" action="download_cv_letter.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
                           </ul>
                     </div><!-- /.container-fluid -->
                     <h4 class="card-title"><?php echo $row['title'] ?></h4>
@@ -496,13 +494,13 @@ and open the template in the editor.
           if( $strSQL ){
             while($row=mysqli_fetch_array($strSQL) ) { ?>
 
-             <!--  echo "<br>".$row['cv_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
+             <!--  echo "<br>".$row['cv_letter_id']." ".$row['time_updated']." ".$row['file_link']." ".$row['image']." ";
              -->
 
             <div class="col-3">
               <div class="card card-block ">
                 <div class="card-content">
-                  <div class="card-body" id="<?php echo $row['cv_id'];?>" >
+                  <div class="card-body" id="<?php echo $row['cv_letter_id'];?>" >
                     <div class="container">
                       <div class="item">
                         <img class="card-img-top img-fluid" src="<?php echo $row['image']; ?>" alt="Card image cap">
@@ -510,7 +508,7 @@ and open the template in the editor.
                     </div>
                     <div class="options">
                         <ul class="option">
-                          <li><form method="post" action="download.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
+                          <li><form method="post" action="download_cv_letter.php" class="download"><a href="" class="downloads"><i class="fa fa-download fa-2x "></i></a></form></li>
                           </ul>
                     </div><!-- /.container-fluid -->
                     <h4 class="card-title"><?php echo $row['title'] ?></h4>

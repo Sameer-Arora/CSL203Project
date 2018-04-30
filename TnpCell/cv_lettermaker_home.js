@@ -125,7 +125,7 @@ $("form#upload").submit(function(e) {
   }
 
   $.ajax({
-    url: "upload.php",
+    url: "upload_cv_letter.php",
     type: 'POST',
     data: formData,
     success: function (data) {
@@ -156,7 +156,7 @@ function upl_callback(data)
   if(doc_added){
 
     var image=values["imagePath"];
-    var  cv_id=values['cv_id'];
+    var  cv_letter_id=values['cv_letter_id'];
     var  last_update=values['last_update'];
     var  name=values['name'];
     var  message=values['message'];
@@ -167,14 +167,14 @@ function upl_callback(data)
 
     if(message=="Updated, file already exists." ){
         console.log('remove');
-        $("#"+cv_id).remove();
-        console.log($("#"+cv_id));
+        $("#"+cv_letter_id).remove();
+        console.log($("#"+cv_letter_id));
     }
 
     $("#your").append("<div class=\"col-3\"> <div class=\"card card-block \">\
-     <div class=\"card-content\"> <div class=\"card-body\" id=\""+ cv_id+"\" > </div></div></div></div>");
-
-    if(type=='Docx'){
+     <div class=\"card-content\"> <div class=\"card-body\" id=\""+ cv_letter_id+"\" > </div></div></div></div>");
+  
+  if(type=='Docx'){
       $('#'+cv_id).append('<div class=\"container\">\
         <div class=\"item\">\
         <img class=\"card-img-top img-fluid\" src=\"'+ image+ '\" alt=\"Card image cap\">\
@@ -217,7 +217,6 @@ function upl_callback(data)
         <p class=\"card-text\">last uploaded: <span class=\"meta_info\">'+last_update+'</span></p>\
         ');
     }
-    
     $('#your').slick('unslick').slick(reinit());
   }
 
@@ -232,14 +231,14 @@ $('.row').on('click',".fa-edit", function() {
 
     var widget = $(this).parentsUntil(".card").find(".card-body");
     console.log(form);
-    var cv_id = widget.attr('id');
-    console.log(cv_id);
-    var da="cv_id="+cv_id;
+    var cv_letter_id = widget.attr('id');
+    console.log(cv_letter_id);
+    var da="cv_letter_id="+cv_letter_id;
 
     $('<input>').attr({
     type: 'hidden',
-    name: 'cv_id',
-    value: cv_id
+    name: 'cv_letter_id',
+    value: cv_letter_id
     }).appendTo(form);
     var formData = new FormData(form);
     alert(form.serialize() );
@@ -256,14 +255,14 @@ $('.row').on('click',".fa-trash", function() {
 
     var widget = $(this).parentsUntil(".card").find(".card-body");
     console.log(widget);
-    var cv_id = widget.attr('id');
-    console.log(cv_id);
-    var da="cv_id="+cv_id;
+    var cv_letter_id = widget.attr('id');
+    console.log(cv_letter_id);
+    var da="cv_letter_id="+cv_letter_id;
 
     $.ajax({
       type:"POST",
       dataType:"text",
-      url:"delete_cv.php",  
+      url:"delete_cv_letter.php",  
       data: da,
       success: function (data) {
         del_callback(data);
@@ -283,9 +282,9 @@ $('.row').on('click',".fa-trash", function() {
     alert(data);
     var values=deparam(data);
     console.log(values);
-    var  cv_id=values['cv_id'] ;
-    alert(cv_id);
-    $("#"+cv_id).remove();
+    var  cv_letter_id=values['cv_letter_id'] ;
+    alert(cv_letter_id);
+    $("#"+cv_letter_id).remove();
     $('#your').slick('unslick').slick(reinit());
   }
 

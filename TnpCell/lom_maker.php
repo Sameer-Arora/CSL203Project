@@ -5,15 +5,15 @@ include ('session.php');
 if(!isset($_SESSION['person_id'])){
     header("Location:login.php?message=Please+login+session+timed+out");
 }
-$_SESSION['cv_id']=$_POST['cv_id'];
+$_SESSION['lom_id']=$_POST['lom_id'];
 
 
-$query ="SELECT * from cv where cv_id=".$_SESSION['cv_id'];
-echo $_POST['cv_id'];
+$query ="SELECT * from lom where lom_id=".$_SESSION['lom_id'];
+echo $_POST['lom_id'];
 
 ?>
 
-      <?php if(isset($_POST['cv_id'])) { 
+      <?php if(isset($_POST['lom_id'])) { 
         include ('test/Databaseconnection.php');
 
           $strSQL=mysqli_query($connection,$query);
@@ -58,7 +58,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>CV Maker:Text Document</title>
+        <title>LOM Maker:Text Document</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=r67knjg64nu28dm3xphpc1vtt89whaxzywux529he8gynb75'></script>
@@ -103,7 +103,7 @@ and open the template in the editor.
                 $.ajax({
                     type:       'POST',
                     cache:      false,
-                    url:        'save_doc.php',
+                    url:        'save_doc_lom.php',
                     data:       'file_text='+escape(data),
                     success:    function(dat){
                                 alert(dat);

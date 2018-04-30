@@ -14,7 +14,7 @@ $added=file_put_contents($filename, $html);
 
 echo $added;
 
-putenv('HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv/");
+putenv('HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv_letter/");
 
 #converting html to docs.
 $command = ' pandoc -f html %s.html -t docx -o %s.docx';

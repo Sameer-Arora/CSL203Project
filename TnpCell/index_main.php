@@ -90,9 +90,9 @@
 									<li><a href="login.php">CV Maker</a></li>
 									<li><a href="login.php">Cover Letter</a></li>
 								<?php else: ?>
-									<li><a href="#">LOM</a></li>
+									<li><a href="lommaker_home.php">LOM</a></li>
 									<li><a href="cvmaker_home.php" >CV Maker</a></li>
-									<li><a href="#">Cover Letter</a></li>
+									<li><a href="cv_lettermaker_home.php">Cover Letter</a></li>
 								<?php endif; ?>
 
 							</ul>

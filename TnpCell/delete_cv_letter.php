@@ -9,17 +9,17 @@ if(!isset($_SESSION['person_id'])){
     header("Location:login.php?message=Please+login+session+timed+out");
 }
 
-if(isset($_POST['cv_id'])){
+if(isset($_POST['cv_letter_id'])){
 
    #echo "fsag"; 
 
   include('./test/Databaseconnection.php');
 
-  $cv_id   = mysqli_real_escape_string($connection,$_POST['cv_id']);
+  $cv_letter_id   = mysqli_real_escape_string($connection,$_POST['cv_letter_id']);
 
-  $query ="Select * from cv  where cv_id=".$cv_id;
+  $query ="Select * from cv_letter  where cv_letter_id=".$cv_letter_id;
 
-  #echo $cv_id;
+  #echo $cv_letter_id;
 
   $strSQL=mysqli_query($connection,$query);
 
@@ -46,8 +46,8 @@ if(isset($_POST['cv_id'])){
 
     #echo "<br>"."$Name";
 
-    putenv('HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv/");
-    #echo 'HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv/";
+    putenv('HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv_letter/");
+    #echo 'HOME=/var/www/html/CSL203Project/TnpCell/uploads/'.$_SESSION['name'].$_SESSION['person_id']."/cv_letter/";
     $command = ' rm ~/%s* ; perror $?';
 
     $command = sprintf($command,$Name);
@@ -68,7 +68,7 @@ if(isset($_POST['cv_id'])){
     }
     else{
 
-        $query ="delete from ratings where cv_id=".$cv_id;
+        $query ="delete from ratings where cv_letter_id=".$cv_letter_id;
 
         $strSQL=mysqli_query($connection,$query);
         
@@ -76,7 +76,7 @@ if(isset($_POST['cv_id'])){
             $executed=true;
             #echo "<br>"."exec<br>";
 
-            $query ="delete from cv  where cv_id=".$cv_id;
+            $query ="delete from cv_letter  where cv_letter_id=".$cv_letter_id;
 
             $strSQL=mysqli_query($connection,$query);
 
@@ -109,7 +109,7 @@ if(isset($_POST['cv_id'])){
 <?php 
 
 if($doc_deleted){
-   echo "message=$message&cv_id=".$_POST['cv_id'];
+   echo "message=$message&cv_letter_id=".$_POST['cv_letter_id'];
    }
 else {
    echo "message=$message";
