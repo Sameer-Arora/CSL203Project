@@ -288,7 +288,7 @@ else {
 
     <script>
 
-    //redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
+    redirect("../login.php",'get',{message:'<?php echo $message;?>' ,action: '<?php echo $action;?>'} );
 
     </script>
 

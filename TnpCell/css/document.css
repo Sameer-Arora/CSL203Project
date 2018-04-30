@@ -14,5 +14,7 @@ and open the template in the editor.
 
 .document{
     width:80%;
+    position: relative;
+    left: 10%;
 }
 

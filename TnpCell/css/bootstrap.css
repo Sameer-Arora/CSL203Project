@@ -4020,7 +4020,7 @@ tbody.collapse.in {
 }
 
 .navbar-inverse {
-  background-color: #222;
+  background-color: #000000c4;
   border-color: #090909;
 }
 .navbar-inverse .navbar-brand {
@@ -4059,7 +4059,7 @@ tbody.collapse.in {
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: #926b6b;
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
   background-color: #090909;
@@ -5979,7 +5979,7 @@ button.close {
 }
 
 .show {
-  display: block !important;
+  /* display: block !important; */
   opacity: 100;
 }
 

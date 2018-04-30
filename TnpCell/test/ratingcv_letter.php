@@ -22,21 +22,21 @@ foreach ($_POST as $key => $value) {
     ##echo $value."<br>";
 }
 
-##echo $_POST['cv_id'];
+##echo $_POST['cv_letter_id'];
 
  
 
 # either return ratings, or process a vote
 if (isset($_POST['fetch']) ) {
     
-    $query = mysqli_query($connection,"SELECT SUM(cv_rate) as total_rate ,COUNT(person_id) as total_people from ratings where cv_id=".$_POST['cv_id']." group by person_id " );
+    $query = mysqli_query($connection,"SELECT SUM(cover_rate) as total_rate ,COUNT(person_id) as total_people from ratings where cv_letter_id=".$_POST['cv_letter_id']." group by person_id " );
 
-    $cv_data = mysqli_fetch_array($query);
+    $cv_letter_data = mysqli_fetch_array($query);
 
 
-    if( $cv_data ) {
-        $avg_rating=$cv_data['total_rate'];
-        $no_votes=$cv_data['total_people'];
+    if( $cv_letter_data ) {
+        $avg_rating=$cv_letter_data['total_rate'];
+        $no_votes=$cv_letter_data['total_people'];
         $rounded_rating=round($avg_rating/$no_votes);
         echo "avg_rating=".$rounded_rating."&no_votes=".$no_votes;
     }
@@ -48,7 +48,7 @@ if (isset($_POST['fetch']) ) {
 } 
 else{
     
-    $query = mysqli_query($connection,"SELECT * from ratings where cv_id=".$_POST['cv_id']." and person_id=".$_SESSION['person_id'] ) ;
+    $query = mysqli_query($connection,"SELECT * from ratings where cv_letter_id=".$_POST['cv_letter_id']." and person_id=".$_SESSION['person_id'] ) ;
 
     $person_data = mysqli_fetch_array($query);
 
@@ -66,7 +66,7 @@ else{
     if( $person_data ) {
 
         #updating the vote by user.
-        $query = mysqli_query($connection," update ratings set cv_rate=".$vote." where cv_id=".$_POST['cv_id']." and person_id=".$person_data['person_id'] ) ;
+        $query = mysqli_query($connection," update ratings set cover_rate=".$vote." where cv_letter_id=".$_POST['cv_letter_id']." and person_id=".$person_data['person_id'] ) ;
         if($query){
             #echo "insert".$connection->error;
 
@@ -78,8 +78,8 @@ else{
     # Create a new one if it does not
     else {
         #inserting the vote by user.
-        $query = mysqli_query($connection,"insert into ratings(person_id,cv_id,cv_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['cv_id'].",".$vote.");" );
-        #echo "insert into ratings(person_id,cv_id,cv_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['cv_id'].",".$vote.");";
+        $query = mysqli_query($connection,"insert into ratings(person_id,cv_letter_id,cover_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['cv_letter_id'].",".$vote.");" );
+        #echo "insert into ratings(person_id,cv_letter_id,cover_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['cv_letter_id'].",".$vote.");";
         
         if($query){
             #echo "insert".$connection->error;
@@ -88,17 +88,17 @@ else{
         }
 
     }  
-    $query = mysqli_query($connection,"SELECT SUM(cv_rate) as total_rate ,COUNT(person_id) as total_people from ratings where cv_id=".$_POST['cv_id']." group by person_id " );
+    $query = mysqli_query($connection,"SELECT SUM(cover_rate) as total_rate ,COUNT(person_id) as total_people from ratings where cv_letter_id=".$_POST['cv_letter_id']." group by person_id " );
 
-    $cv_data = mysqli_fetch_array($query);
+    $cv_letter_data = mysqli_fetch_array($query);
 
-    get_ratings($cv_data);
+    get_ratings($cv_letter_data);
 }
 
-function get_ratings($cv_data) {
-    if( $cv_data ) {
-        $avg_rating=$cv_data['total_rate'];
-        $no_votes=$cv_data['total_people'];
+function get_ratings($cv_letter_data) {
+    if( $cv_letter_data ) {
+        $avg_rating=$cv_letter_data['total_rate'];
+        $no_votes=$cv_letter_data['total_people'];
         $rounded_rating=round($avg_rating/$no_votes);
         echo "avg_rating=".$rounded_rating."&no_votes=".$no_votes;
     }
@@ -108,7 +108,7 @@ function get_ratings($cv_data) {
 }
 
 
-function vote($connection,$cv_data,$person_data) {
+function vote($connection,$cv_letter_data,$person_data) {
 
     # Get the value of the vote
     preg_match('/star_([1-5]{1})/', $_POST['clicked_on'], $match);
@@ -122,7 +122,7 @@ function vote($connection,$cv_data,$person_data) {
 	if( $person_data ) {
 
         #updating the vote by user.
-        $query = mysqli_query($connection," UPDATE ratings set cv_rate=".$vote." where cv_id=".$_POST['cv_id']." and person_id=".$person_data['person_id'] ) ;
+        $query = mysqli_query($connection," UPDATE ratings set cover_rate=".$vote." where cv_letter_id=".$_POST['cv_letter_id']." and person_id=".$person_data['person_id'] ) ;
         if($query){
             #echo "insert".$connection->error;
 
@@ -134,7 +134,7 @@ function vote($connection,$cv_data,$person_data) {
 	# Create a new one if it does not
 	else {
         #inserting the vote by user.
-        $query = mysqli_query($connection,"INSERT INTO ratings(person_id,cv_id,cv_rate)  VALUES (".$person_data['person_id'].",".$_POST['cv_id'].",".$vote.")" );
+        $query = mysqli_query($connection,"INSERT INTO ratings(person_id,cv_letter_id,cover_rate)  VALUES (".$person_data['person_id'].",".$_POST['cv_letter_id'].",".$vote.")" );
         
         if($query){
             #echo "insert".$connection->error;
@@ -144,7 +144,7 @@ function vote($connection,$cv_data,$person_data) {
 
 	}  
 
-    get_ratings($cv_data);
+    get_ratings($cv_letter_data);
 
 }
 

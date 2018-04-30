@@ -22,14 +22,14 @@ foreach ($_POST as $key => $value) {
     ##echo $value."<br>";
 }
 
-##echo $_POST['cv_id'];
+##echo $_POST['lom_id'];
 
  
 
 # either return ratings, or process a vote
 if (isset($_POST['fetch']) ) {
     
-    $query = mysqli_query($connection,"SELECT SUM(cv_rate) as total_rate ,COUNT(person_id) as total_people from ratings where cv_id=".$_POST['cv_id']." group by person_id " );
+    $query = mysqli_query($connection,"SELECT SUM(lom_rate) as total_rate ,COUNT(person_id) as total_people from ratings where lom_id=".$_POST['lom_id']." group by person_id " );
 
     $cv_data = mysqli_fetch_array($query);
 
@@ -48,7 +48,7 @@ if (isset($_POST['fetch']) ) {
 } 
 else{
     
-    $query = mysqli_query($connection,"SELECT * from ratings where cv_id=".$_POST['cv_id']." and person_id=".$_SESSION['person_id'] ) ;
+    $query = mysqli_query($connection,"SELECT * from ratings where lom_id=".$_POST['lom_id']." and person_id=".$_SESSION['person_id'] ) ;
 
     $person_data = mysqli_fetch_array($query);
 
@@ -66,7 +66,7 @@ else{
     if( $person_data ) {
 
         #updating the vote by user.
-        $query = mysqli_query($connection," update ratings set cv_rate=".$vote." where cv_id=".$_POST['cv_id']." and person_id=".$person_data['person_id'] ) ;
+        $query = mysqli_query($connection," update ratings set lom_rate=".$vote." where lom_id=".$_POST['lom_id']." and person_id=".$person_data['person_id'] ) ;
         if($query){
             #echo "insert".$connection->error;
 
@@ -78,8 +78,8 @@ else{
     # Create a new one if it does not
     else {
         #inserting the vote by user.
-        $query = mysqli_query($connection,"insert into ratings(person_id,cv_id,cv_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['cv_id'].",".$vote.");" );
-        #echo "insert into ratings(person_id,cv_id,cv_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['cv_id'].",".$vote.");";
+        $query = mysqli_query($connection,"insert into ratings(person_id,lom_id,lom_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['lom_id'].",".$vote.");" );
+        #echo "insert into ratings(person_id,lom_id,lom_rate)  VALUES (".$_SESSION['person_id'].",".$_POST['lom_id'].",".$vote.");";
         
         if($query){
             #echo "insert".$connection->error;
@@ -88,7 +88,7 @@ else{
         }
 
     }  
-    $query = mysqli_query($connection,"SELECT SUM(cv_rate) as total_rate ,COUNT(person_id) as total_people from ratings where cv_id=".$_POST['cv_id']." group by person_id " );
+    $query = mysqli_query($connection,"SELECT SUM(lom_rate) as total_rate ,COUNT(person_id) as total_people from ratings where lom_id=".$_POST['lom_id']." group by person_id " );
 
     $cv_data = mysqli_fetch_array($query);
 
@@ -122,7 +122,7 @@ function vote($connection,$cv_data,$person_data) {
 	if( $person_data ) {
 
         #updating the vote by user.
-        $query = mysqli_query($connection," UPDATE ratings set cv_rate=".$vote." where cv_id=".$_POST['cv_id']." and person_id=".$person_data['person_id'] ) ;
+        $query = mysqli_query($connection," UPDATE ratings set lom_rate=".$vote." where lom_id=".$_POST['lom_id']." and person_id=".$person_data['person_id'] ) ;
         if($query){
             #echo "insert".$connection->error;
 
@@ -134,7 +134,7 @@ function vote($connection,$cv_data,$person_data) {
 	# Create a new one if it does not
 	else {
         #inserting the vote by user.
-        $query = mysqli_query($connection,"INSERT INTO ratings(person_id,cv_id,cv_rate)  VALUES (".$person_data['person_id'].",".$_POST['cv_id'].",".$vote.")" );
+        $query = mysqli_query($connection,"INSERT INTO ratings(person_id,lom_id,lom_rate)  VALUES (".$person_data['person_id'].",".$_POST['lom_id'].",".$vote.")" );
         
         if($query){
             #echo "insert".$connection->error;
