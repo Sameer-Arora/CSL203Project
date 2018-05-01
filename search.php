@@ -1,18 +1,13 @@
-
 <?php
 include 'session.php';
 ?>
-
-<!DOCTYPE html>
-<html>
   
 <!DOCTYPE HTML>
 <html>
   <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>TnP &mdash; Student Portal</title>
+  <title>TnP &mdash; Alumni Connect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
   <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -53,7 +48,8 @@ include 'session.php';
   <link rel="stylesheet" href="css/bootstrap.css">
   <!-- Theme style  -->
   <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity=" sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="alumni_table.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
@@ -179,78 +175,192 @@ include 'session.php';
 
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>s
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<div>
 
-        <div class="containerakshat" style="margin-top:200px;margin-bottom:200px;">
-            <div class="rowakshat">
-<div id='formakshat'><center>
+ 
+    <center>
+      <h3 style='margin-top:20px;'>Looking for alumni? </h3>
+<form action="search.php" class="form-inline" role = "form" align="center" method="post">
+      <p>Just apply the filters below!</p>
 
-                <form  style = "width: 60%" action="" method="Post" id="formakshat">
-                    <div class="form-group">
-                      <h3>Please fill your details below</h3>
-                    <input type="text" class = "form-control" id="exampleFormControlInput1" name="idName" placeholder="Enter name" value ="" required>
-                    </div>
-                    <div class="form-group">
-                    <input type="text" class = "form-control"  name="idYear" placeholder="Year of Passing" value ="" required>
-                  </div>
-                      <div class="form-group">
-                        <select name="idBranch" class="form-control" id="exampleFormControlSelect1" value ="" required>
-                          <option value="">--Department--</option>
-                          <option value="CSE">Computer Science and Engineering</option>
-                          <option value="EE">Electrical Engineering</option>
-                          <option value="ME">Mechanical Engineering</option>
-                          <option value="CE">Civil Engineering</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class = "form-control" name="idEmail" placeholder="Email" value ="" required>
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class = "form-control"  name="idCompany" placeholder="Company" value ="" required>
-                      </div>
-                      <div class="form-group">
-                        <input type="text" class = "form-control"  name="idPost" placeholder="Post" value ="" required>
-                      </div>
-                      <div class="form-group">
-                       <input type="text" class = "form-control" name="idAddress" placeholder="Address"  value ="" required>
-                        </div>
-                        <div class="form-group">
-                        <input type="text" name="idPhone" class = "form-control" placeholder="Contact Number" value ="" required>
-                  </div>
-                    <input type="submit" class = "btn btn-primary" name="update" value="Submit" value ="" required>
-                </form>
-            </center>
-            
+      <div class="form-group">
+      <input type="text" name="byName" placeholder="Name">
+<!--
+      <select name="byName">
+        <option value="none">Name</option>;
+     <?php
+          include('connect.php');
+          $result = mysqli_query($conn,"SELECT DISTINCT Name FROM `alumni` WHERE 1");
+           while ($row = $result->fetch_assoc()) {
+              echo "<option value = \"".$row["Name"]."\">".$row["Name"]."</option>";
+              //echo "Hello World!!";
+             // echo $row["year"] + 'b<r>';
+           }
+      ?>
+      -->
     </div>
-</div>
-</div>
-</div>
+    </select> 
 
+
+      <div class="form-group">
+      <select name="byYear">
+
+        <option value="none">Year</option>;
+     <?php
+          include('connect.php');
+          $result = mysqli_query($conn,"SELECT DISTINCT year FROM `alumni` WHERE 1");
+           while ($row = $result->fetch_assoc()) {
+              echo "<option value = \"".$row["year"]."\">".$row["year"]."</option>";
+              //echo "Hello World!!";
+             // echo $row["year"] + 'b<r>';
+           }
+      ?>
+      <!-- 
+
+      <option value="">Your year</option>         
+      <option value="1">1st year</option>
+      <option value="2">2nd year</option>
+      <option value="3">3rd year</option>
+      <option value="4">4th year</option>
+      -->
+    </select> 
+  </div>
+  <div class="form-group">
+      <select name="byBranch">
+
+        <option value="none">Branch</option>;
+          <?php
+          include('connect.php');
+          $result = mysqli_query($conn,"select DISTINCT Department from alumni where 1");
+           while ($row = $result->fetch_assoc()) {
+              echo "<option value = \"".$row["Department"]."\">".$row["Department"]."</option>";
+              //echo "Hello World!!";
+             // echo $row["year"] + 'b<r>';
+           }
+      ?>
+
+        <!--
+      <option value="">Branch</option>
+      <option value="cse">Computer Science</option>
+      <option value="ee">Electrical Engg.</option>
+      <option value="me">Mechanical Engg.</option>
+      <option value="ce">Civil Engg.</option>
+    -->
+    </select> 
+  </div>
+  <div class="form-group">
+      <select name="byCompany">
+
+        <option value="none">Company</option>;
+          <?php
+          include('connect.php');
+          $result = mysqli_query($conn,"select DISTINCT Company from alumni where 1");
+           while ($row = $result->fetch_assoc()) {
+              echo "<option value = \"".$row["Company"]."\">".$row["Company"]."</option>";
+              //echo "Hello World!!";
+             // echo $row["year"] + 'b<r>';
+           }
+      ?>
+
+        <!--
+      <option value="">Branch</option>
+      <option value="cse">Computer Science</option>
+      <option value="ee">Electrical Engg.</option>
+      <option value="me">Mechanical Engg.</option>
+      <option value="ce">Civil Engg.</option>
+    -->
+    </select> 
+   
+<div class="form-group">
+  <input type="submit" value="Submit">
+</div>
+</form>
+    </center>
+
+<br><br>
+<center>
+  <div class="table-users">
+    <div class="header">Alumni</div>
+ <table width="100%" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Year</th>
+    <th>Email</th>
+    <th>Company</th>
+    <th>Post</th>
+    <th>Address</th>
+    <th>PhoneNumber</th>
+  </tr>
+
+  <?php
+
+    if(isset($_POST['byName']) AND isset($_POST['byBranch']) AND isset($_POST['byYear']) AND isset($_POST['byCompany'])){
+        $nm = $_POST['byName'];
+        $bb = $_POST['byBranch'];
+        $by = $_POST['byYear'];
+        $cm = $_POST['byCompany'];
+
+        include('connect.php');
+        $que = "select * from alumni where 1";
+        if($nm != "none"){
+          $que .= " and Name Like '%".$nm."%'";
+        }
+
+
+        if($bb != "none"){
+          $que .= " and Branch = '".$bb."'";
+        }
+
+
+        if($by != "none"){
+          $que .= " and Year = ".$by;
+        }
+
+        if($cm != "none"){
+          $que .= " and Company = '".$cm."'";
+        }
+
+        //echo $que;
+
+          $result = mysqli_query($conn,$que);
+           while ($row = $result->fetch_assoc()) {
+              //echo "<option value = \"".$row["Department"]."\">".$row["Department"]."</option>";
+              //echo "Hello World!!";
+             // echo $row["year"] + 'b<r>';
+              $name1 = $row["Name"];
+              $Department1 = $row["Department"];
+              $Year1 = $row["Year"];
+              $Email1 = $row["Email"];
+              $Company1 = $row["Company"];
+              $Post1 = $row["Post"];
+              $Address1 = $row["Address"];
+              $Phone1 = $row["Phone Number"];
+              echo "<tr> ";
+              echo "<td>".$name1."</th>";
+              echo "<td>".$Department1."</th>";
+              echo "<td>".$Year1."</th>";
+              echo "<td>".$Email1."</th>";
+              echo "<td>".$Company1."</th>";
+              echo "<td>".$Post1."</th>";
+              echo "<td>".$Address1."</th>";
+              echo "<td>".$Phone1."</th>";
+
+
+              echo "</tr>";
+           }
+         }
+  ?>
+
+  
+</table> 
+</div>
+</center>
+<center>
+  <br>
+                  <h3 style='margin-top:20px;'>Are you an alumnus?</h3>
+                  <a href='add.php' style="font-size:25px;">Fill in your details here</a>
+                </center>
 
 <?php
-    include 'footer.php';
-   include('connect.php'); 
-              if($_SERVER["REQUEST_METHOD"]=="POST")
-              {
-                      if($_POST["update"]){ 
-                        $query = "insert into alumni values('" . $_POST['idName'] . "','" . $_POST['idBranch'] . "'," . $_POST['idYear'] . ",'" . $_POST['idEmail'] . "','" . $_POST['idCompany'] . "','" . $_POST['idPost'] . "','" . $_POST['idAddress'] ."','" . $_POST['idPhone']. "')";
-
-                        $query_dup = "select * from `alumni` where `Name` ='" . $_POST['idName'] . "' and `Department`='" .$_POST['idBranch'] . "' and `Year`=" .$_POST['idYear'] . " and Email='" .$_POST['idEmail'] . "' and `Company`='" .$_POST['idCompany'] . "' and `Post`='" .$_POST['idPost'] . "' and `Address`='" .$_POST['idAddress'] . "' and `Phone Number`=" .$_POST['idPhone'] . "";
-                        #echo $query_dup;
-                        $result_dup = mysqli_query($conn,$query_dup);
-                        if(mysqli_num_rows($result_dup)!=0)
-                        {
-                           echo "<script type='text/javascript'>alert('This entry already exists')</script>";
-                        }
-                        else
-                        {
-                           $result = mysqli_query($conn,$query);
-                           echo "<script type='text/javascript'>alert('Submitted successfully!')</script>";
-                        }
-
-              }}
-            ?>
-
+include 'footer.php';
+?>
