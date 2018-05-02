@@ -75,7 +75,6 @@ if ($result->num_rows > 0)
 								<div class='col-half animate-box' data-animate-effect='fadeInRight'>
 									<div class='table-c'>
 										<div class='desc'>
-											<span>"  . $row['subject']. "</span>
 											<h3>"  . $row['subject']. "</h3>
 											<p>"  . $row['link']. "...</p>
 											<p class='author'><cite>&mdash; "  . $row['post_id']. "</cite></p>
@@ -91,7 +90,6 @@ if ($result->num_rows > 0)
 								<div class='col-half animate-box' data-animate-effect='fadeInLeft'>
 									<div class='table-c'>
 										<div class='desc'>
-											<span>"  . $row['subject']. "</span>
 											<h3>"  . $row['subject']. "</h3>
 											<p>"  . $row['link']. "...</p>
 											<p class='author'><cite>&mdash; "  . $row['post_id']. "</cite></p>

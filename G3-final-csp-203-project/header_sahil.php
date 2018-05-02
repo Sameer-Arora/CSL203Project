@@ -44,6 +44,8 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="drp-dwn.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -80,7 +82,7 @@
 									<li><a href="posted_posts.php">Your Posts</a></li>
 								</ul>
 							</li>
-							<li><a href="#">Alumni Connect</a></li>
+							<li><a href="search.php">Alumni Connect</a></li>
 							<li class="has-dropdown">
 								<a href="#">Student</a>
 								<ul class="dropdown">
@@ -99,14 +101,14 @@
 							<li><a href="preparation_zone.php">preparation Zone</a></li>
 						<?php else: ?>
 							<li class="has-dropdown">
-								<a href="latest_feeds.php">Latest Feed</a>
+								<a href="TnpCell/login.php">Latest Feed</a>
 								<ul class="dropdown">
 									<li><a href="TnpCell/login.php">Post New</a></li>
 									<li><a href="TnpCell/login.php">Followed Posts</a></li>
 									<li><a href="TnpCell/login.php">Your Posts</a></li>
 								</ul>
 							</li>
-							<li><a href="TnpCell/login.php">Alumni Connect</a></li>
+							<li><a href="search.php">Alumni Connect</a></li>
 							<li class="has-dropdown">
 								<a href="#">Student</a>
 								<ul class="dropdown">
@@ -155,7 +157,7 @@
 											<div class="col-md-6 col-sm-6">
 												<?php if(isset($_SESSION['person_id'])): ?>
 												<?php else: ?>
-													<a href="register.php" class="btn btn-default btn-block">Register Now</a>
+													<a href="TnpCell/login.php" class="btn btn-default btn-block">Register Now</a>
 												<?php endif; ?>
 											</div>										
 										</div>

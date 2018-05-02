@@ -37,9 +37,10 @@ function run_query($connection,$query){
 
 include ("header.php");
 
+$person_id  = $_SESSION['person_id'];
+$sql = "SELECT post_id, subject, body, link FROM posts WHERE person_id = '".$person_id."' ORDER BY post_id DESC";
 
 
-$sql = "SELECT post_id, subject, body, link FROM posts ORDER BY post_id DESC";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) 
@@ -57,7 +58,7 @@ if ($result->num_rows > 0)
 	$count = 0;
     while($row = $result->fetch_assoc()) 
     {
-        //echo "id: " . $row['post_id']. " - Subject: " . $row['subject']. " -body " . $row['body']. " -link " . $row['link']. "<br>";
+        // echo "id: " . $row['post_id']. " - Subject: " . $row['subject']. " -body " . $row['body']. " -link " . $row['link']. "<br>";
 
     	$count = $count + 1;
 
@@ -69,13 +70,12 @@ if ($result->num_rows > 0)
 
     	if ($count % 2 == 0) 
     	{
-    		//header("location:http://localhost/TnP/test.php");
+    		// header("location:http://localhost/TnP/test.php");
 
     		echo " 
 								<div class='col-half animate-box' data-animate-effect='fadeInRight'>
 									<div class='table-c'>
 										<div class='desc'>
-											<span>"  . $row['subject']. "</span>
 											<h3>"  . $row['subject']. "</h3>
 											<p>"  . $row['link']. "...</p>
 											<p class='author'><cite>&mdash; "  . $row['post_id']. "</cite></p>
@@ -91,7 +91,6 @@ if ($result->num_rows > 0)
 								<div class='col-half animate-box' data-animate-effect='fadeInLeft'>
 									<div class='table-c'>
 										<div class='desc'>
-											<span>"  . $row['subject']. "</span>
 											<h3>"  . $row['subject']. "</h3>
 											<p>"  . $row['link']. "...</p>
 											<p class='author'><cite>&mdash; "  . $row['post_id']. "</cite></p>
@@ -136,24 +135,27 @@ $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP
 
 // echo $actual_link;
 $query_string = parse_url($actual_link, PHP_URL_QUERY);
-echo $query_string;
-
-$sql = "SELECT post_id, subject, body, link FROM posts WHERE post_id = ".$query_string ;
+// echo $query_string;
+$sql = "SELECT post_id, subject, body, link FROM posts WHERE post_id = " . $query_string ;
 $result = $connection->query($sql);
 while($row = $result->fetch_assoc()){
 	$_SESSION['subject'] = $row['subject'];
 	$_SESSION['body'] = $row['body'];
-    echo "fa";
 }
 
 
+
 $_SESSION['post_id'] = $query_string ;
-echo '<br>fjkl;dasfd;jklsa';
+
+
+
+
+
 
 
  ?>
+ 
+ <script>
 
-<script>
-
-    redirect("test.php",'get');
+    redirect("test_d.php",'get');
 </script>

@@ -16,7 +16,7 @@
 					<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 						<ul class="fh5co-footer-links">
 							<li><a href="index.php">Home</a></li>
-							<li><a href="#">Alumni Connect</a></li>
+							<li><a href="search.php">Alumni Connect</a></li>
 							<li><a href="placement.php">Off-Campus Placement</a></li>
 							<li><a href="intern.php">Internship Opportunities</a></li>
 						</ul>
@@ -26,16 +26,16 @@
 						<ul class="fh5co-footer-links">
 							<li><a href="latest_feeds.php">Latest Feeds</a></li>
 							<li><a href="post_new.php">Post New</a></li>
-							<li><a href="folloewd_posts.php">Followed Posts</a></li>
+							<li><a href="followed_posts.php">Followed Posts</a></li>
 							<li><a href="posted_posts.php">Your Posts</a></li>
 						</ul>
 					</div>
 
 					<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 						<ul class="fh5co-footer-links">
-							<li><a href="lommaker_home.php">CV Maker</a></li>
-							<li><a href="cvmaker_home.php">LOM</a></li>
-							<li><a href="cv_lettermaker_home.php">Cover Letter</a></li>
+							<li><a href="TnpCell/lommaker_home.php">CV Maker</a></li>
+							<li><a href="TnpCell/cvmaker_home.php">LOM</a></li>
+							<li><a href="TnpCell/cv_lettermaker_home.php">Cover Letter</a></li>
 						</ul>
 					</div>
 
@@ -50,7 +50,7 @@
 					<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 						<ul class="fh5co-footer-links">
 							<li><a href="index.php">Home</a></li>
-							<li><a href="login.php">Alumni Connect</a></li>
+							<li><a href="search.php">Alumni Connect</a></li>
 							<li><a href="placement.php">Off-Campus Placement</a></li>
 							<li><a href="intern.php">Internship Opportunities</a></li>
 						</ul>
@@ -58,18 +58,18 @@
 
 					<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 						<ul class="fh5co-footer-links">
-							<li><a href="latest_feeds.php">Latest Feeds</a></li>
-							<li><a href="login.php">Post New</a></li>
-							<li><a href="login.php">Followed Posts</a></li>
-							<li><a href="login.php">Your Posts</a></li>
+							<li><a href="TnpCell/login.php">Latest Feeds</a></li>
+							<li><a href="TnpCell/login.php">Post New</a></li>
+							<li><a href="TnpCell/login.php">Followed Posts</a></li>
+							<li><a href="TnpCell/login.php">Your Posts</a></li>
 						</ul>
 					</div>
 
 					<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 						<ul class="fh5co-footer-links">
-							<li><a href="login.php">CV Maker</a></li>
-							<li><a href="login.php">LOM</a></li>
-							<li><a href="login.php">Cover Letter</a></li>
+							<li><a href="TnpCell/login.php">CV Maker</a></li>
+							<li><a href="TnpCell/login.php">LOM</a></li>
+							<li><a href="TnpCell/login.php">Cover Letter</a></li>
 						</ul>
 					</div>
 
